@@ -1,0 +1,68 @@
+{
+  "file_type": "OCF_VESTING_TERMS_FILE",
+  "items": [
+    {
+      "allocation_type": "CUMULATIVE_ROUND_DOWN",
+      "description": "100% of the options vest on a security-specific date, within time boundaries",
+      "id": "all-or-nothing-with-expiration",
+      "name": "Documentation: Example 2",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "description": "The date on which the vesting period begins",
+          "id": "vesting-start",
+          "next_condition_ids": [
+            "relative-expiration",
+            "absolute-expiration",
+            "qualifying-sale"
+          ],
+          "quantity": "0",
+          "trigger": {
+            "type": "VESTING_START_DATE"
+          }
+        },
+        {
+          "description": "0% vesting three years after vesting start",
+          "id": "relative-expiration",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 36,
+              "occurrences": 1,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "vesting-start",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "0% vesting after 1 Jan, 2025",
+          "id": "absolute-expiration",
+          "next_condition_ids": [],
+          "quantity": "0",
+          "trigger": {
+            "date": "2025-01-01",
+            "type": "VESTING_SCHEDULE_ABSOLUTE"
+          }
+        },
+        {
+          "description": "Company is acquired for > $100MM",
+          "id": "qualifying-sale",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1450 @@
+{
+  "file_type": "OCF_TRANSACTIONS_FILE",
+  "items": [
+    {
+      "date": "2022-01-20",
+      "id": "test-convertible-acceptance-minimal",
+      "object_type": "TX_CONVERTIBLE_ACCEPTANCE",
+      "security_id": "2936wa8yefhdsvcn"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2022-01-20",
+      "id": "test-convertible-acceptance-all-fields",
+      "object_type": "TX_CONVERTIBLE_ACCEPTANCE",
+      "security_id": "2936wa8yefhdsvcn"
+    },
+    {
+      "amount": {
+        "amount": "53.09",
+        "currency": "USD"
+      },
+      "date": "2019-01-31",
+      "id": "test-convertible-cancellation-minimal",
+      "object_type": "TX_CONVERTIBLE_CANCELLATION",
+      "reason_text": "for testing",
+      "security_id": "asdf962w3hfsdad"
+    },
+    {
+      "amount": {
+        "amount": "53.09",
+        "currency": "USD"
+      },
+      "balance_security_id": "new-security",
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2019-01-31",
+      "id": "test-convertible-cancellation-all-fields",
+      "object_type": "TX_CONVERTIBLE_CANCELLATION",
+      "reason_text": "for testing",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2006-11-09",
+      "id": "test-convertible-conversion-minimal",
+      "object_type": "TX_CONVERTIBLE_CONVERSION",
+      "quantity_converted": "100.00",
+      "reason_text": "for testing",
+      "resulting_security_ids": [
+        "c349dcc8-cbf9-4ed9-88cd-9de4d0c8517c",
+        "..."
+      ],
+      "security_id": "b61c70c8-19a6-49c0-98f4-65f6c76b3841",
+      "trigger_id": "CN-1.CONV.TRIG.1"
+    },
+    {
+      "date": "2006-11-09",
+      "id": "test-custom-conversion-minimal",
+      "object_type": "TX_CONVERTIBLE_CONVERSION",
+      "quantity_converted": "100.00",
+      "reason_text": "for testing",
+      "resulting_security_ids": [
+        "c349dcc8-cbf9-4ed9-88cd-9de4d0c8517c",
+        "..."
+      ],
+      "security_id": "b61c70c8-19a6-49c0-98f4-65f6c76b3841",
+      "trigger_id": "CN-1.CONV.TRIG.1"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2006-11-09",
+      "id": "test-convertible-conversion-all-fields",
+      "object_type": "TX_CONVERTIBLE_CONVERSION",
+      "quantity_converted": "100.00",
+      "reason_text": "for testing",
+      "resulting_security_ids": [
+        "c349dcc8-cbf9-4ed9-88cd-9de4d0c8517c",
+        "..."
+      ],
+      "security_id": "b61c70c8-19a6-49c0-98f4-65f6c76b3841",
+      "trigger_id": "CN-1.CONV.TRIG"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2006-11-09",
+      "id": "test-convertible-custom-conversion-all-fields",
+      "object_type": "TX_CONVERTIBLE_CONVERSION",
+      "quantity_converted": "100.00",
+      "reason_text": "for testing",
+      "resulting_security_ids": [
+        "c349dcc8-cbf9-4ed9-88cd-9de4d0c8517c",
+        "..."
+      ],
+      "security_id": "b61c70c8-19a6-49c0-98f4-65f6c76b3841",
+      "trigger_id": "CN-1.CONV.TRIG"
+    },
+    {
+      "conversion_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "compounding_type": "COMPOUNDING",
+              "day_count_convention": "ACTUAL_365",
+              "interest_accrual_period": "MONTHLY",
+              "interest_payout": "DEFERRED",
+              "interest_rates": [
+                {
+                  "accrual_start_date": "2021-01-01",
+                  "rate": "0.0899"
+                }
+              ],
+              "type": "CONVERTIBLE_NOTE_CONVERSION"
+            },
+            "converts_to_future_round": true,
+            "type": "CONVERTIBLE_CONVERSION_RIGHT"
+          },
+          "nickname": "Converts on Maturity",
+          "trigger_date": "2022-01-01",
+          "trigger_description": "The note shall convert on the date of maturity",
+          "trigger_id": "CN-1.TRIG.1",
+          "type": "AUTOMATIC_ON_DATE"
+        }
+      ],
+      "convertible_type": "NOTE",
+      "custom_id": "CN-1",
+      "date": "1978-05-27",
+      "id": "test-convertible-issuance-minimal",
+      "investment_amount": {
+        "amount": "1000",
+        "currency": "GBP"
+      },
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "security_id": "con_123456",
+      "security_law_exemptions": [],
+      "seniority": 1,
+      "stakeholder_id": "stk_567890"
+    },
+    {
+      "board_approval_date": "2022-01-01",
+      "conversion_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "compounding_type": "COMPOUNDING",
+              "day_count_convention": "ACTUAL_365",
+              "interest_accrual_period": "MONTHLY",
+              "interest_payout": "DEFERRED",
+              "interest_rates": [
+                {
+                  "accrual_end_date": "2023-12-31",
+                  "accrual_start_date": "2021-01-01",
+                  "rate": "0.08"
+                }
+              ],
+              "type": "CONVERTIBLE_NOTE_CONVERSION"
+            },
+            "converts_to_future_round": true,
+            "type": "CONVERTIBLE_CONVERSION_RIGHT"
+          },
+          "nickname": "Converts on Maturity",
+          "trigger_date": "2022-01-01",
+          "trigger_description": "The note shall convert on the date of maturity",
+          "trigger_id": "CN-1.TRIG.1",
+          "type": "AUTOMATIC_ON_DATE"
+        }
+      ],
+      "convertible_type": "NOTE",
+      "custom_id": "CN-1",
+      "date": "1978-05-27",
+      "id": "test-convertible-custom-conversion-issuance-minimal",
+      "investment_amount": {
+        "amount": "1000",
+        "currency": "GBP"
+      },
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "security_id": "con_123456",
+      "security_law_exemptions": [],
+      "seniority": 1,
+      "stakeholder_id": "stk_567890"
+    },
+    {
+      "board_approval_date": "2022-01-01",
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "consideration_text": "3.50 USD",
+      "conversion_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "compounding_type": "COMPOUNDING",
+              "day_count_convention": "ACTUAL_365",
+              "interest_accrual_period": "MONTHLY",
+              "interest_payout": "DEFERRED",
+              "interest_rates": [
+                {
+                  "accrual_start_date": "2021-01-01",
+                  "rate": "0.0115"
+                },
+                {
+                  "accrual_start_date": "2022-01-01",
+                  "rate": "0.0135"
+                },
+                {
+                  "accrual_end_date": "2023-12-31",
+                  "accrual_start_date": "2023-01-01",
+                  "rate": "0.0155"
+                }
+              ],
+              "type": "CONVERTIBLE_NOTE_CONVERSION"
+            },
+            "converts_to_future_round": true,
+            "type": "CONVERTIBLE_CONVERSION_RIGHT"
+          },
+          "nickname": "Converts on Maturity",
+          "trigger_date": "2022-01-01",
+          "trigger_description": "The note shall convert on the date of maturity",
+          "trigger_id": "CN-1.TRIG.1",
+          "type": "AUTOMATIC_ON_DATE"
+        }
+      ],
+      "convertible_type": "SAFE",
+      "custom_id": "CN-1",
+      "date": "1978-05-27",
+      "id": "test-convertible-issuance-all-fields",
+      "investment_amount": {
+        "amount": "1000",
+        "currency": "GBP"
+      },
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "pro_rata": "2500",
+      "security_id": "con_123456",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "seniority": 1,
+      "stakeholder_id": "stk_567890"
+    },
+    {
+      "board_approval_date": "2022-01-01",
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "consideration_text": "1000.0 USD",
+      "conversion_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "conversion_mfn": false,
+              "conversion_timing": "PRE_MONEY",
+              "type": "SAFE_CONVERSION"
+            },
+            "converts_to_future_round": true,
+            "type": "CONVERTIBLE_CONVERSION_RIGHT"
+          },
+          "nickname": "Next Financing",
+          "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
+          "trigger_description": "Conversion at Next Equity Financing",
+          "trigger_id": "CN-1.TRIG.1",
+          "type": "AUTOMATIC_ON_CONDITION"
+        }
+      ],
+      "convertible_type": "SAFE",
+      "custom_id": "SAFE-1",
+      "date": "1978-05-27",
+      "id": "test-safe-issuance-all-fields",
+      "investment_amount": {
+        "amount": "1000",
+        "currency": "USD"
+      },
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "pro_rata": "2500",
+      "security_id": "safe_123456",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "seniority": 1,
+      "stakeholder_id": "stk_567890"
+    },
+    {
+      "date": "2021-01-14",
+      "id": "test-convertible-retraction-minimal",
+      "object_type": "TX_CONVERTIBLE_RETRACTION",
+      "reason_text": "oops",
+      "security_id": "test-convertible-retraction"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2021-01-14",
+      "id": "test-convertible-retraction-all-fields",
+      "object_type": "TX_CONVERTIBLE_RETRACTION",
+      "reason_text": "oops",
+      "security_id": "test-convertible-retraction"
+    },
+    {
+      "amount": {
+        "amount": "-867.53",
+        "currency": "USD"
+      },
+      "date": "2018-06-07",
+      "id": "test-convertible-transfer-minimal",
+      "object_type": "TX_CONVERTIBLE_TRANSFER",
+      "resulting_security_ids": [
+        "new-security-1",
+        "..."
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "amount": {
+        "amount": "-867.53",
+        "currency": "USD"
+      },
+      "balance_security_id": "test-security-id-2",
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "consideration_text": "3.50 USD",
+      "date": "2018-06-07",
+      "id": "test-convertible-transfer-all-fields",
+      "object_type": "TX_CONVERTIBLE_TRANSFER",
+      "resulting_security_ids": [
+        "new-security-1",
+        "..."
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2019-12-10",
+      "id": "test-plan-security-acceptance-minimal",
+      "object_type": "TX_PLAN_SECURITY_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2019-12-10",
+      "id": "test-plan-security-acceptance-all-fields",
+      "object_type": "TX_PLAN_SECURITY_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2019-12-11",
+      "id": "test-plan-security-cancellation-minimal",
+      "object_type": "TX_PLAN_SECURITY_CANCELLATION",
+      "quantity": "100",
+      "reason_text": "need to cancel",
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "test-balance-security-id",
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2019-12-11",
+      "id": "test-plan-security-cancellation-all-fields",
+      "object_type": "TX_PLAN_SECURITY_CANCELLATION",
+      "quantity": "100",
+      "reason_text": "need to cancel",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "date": "2019-12-11",
+      "id": "test-plan-security-return_to_pool",
+      "object_type": "TX_STOCK_PLAN_RETURN_TO_POOL",
+      "quantity": "100",
+      "reason_text": "Options cancelled and rolled over to 2020 plan",
+      "security_id": "test-security-id",
+      "stock_plan_id": "2020-stock-plan-id"
+    },
+    {
+      "date": "2019-12-12",
+      "id": "test-plan-security-exercise-minimal",
+      "object_type": "TX_PLAN_SECURITY_EXERCISE",
+      "quantity": "100",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "comment-one",
+        "comment-two",
+        "..."
+      ],
+      "consideration_text": "1.00 USD",
+      "date": "2019-12-12",
+      "id": "test-plan-security-exercise-full-fields",
+      "object_type": "TX_PLAN_SECURITY_EXERCISE",
+      "quantity": "100",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "compensation_type": "RSU",
+      "custom_id": "CA-1",
+      "date": "2019-12-12",
+      "exercise_price": {
+        "amount": "50.00",
+        "currency": "USD"
+      },
+      "expiration_date": "2031-01-20",
+      "id": "test-plan-security-issuance-minimal",
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "quantity": "50",
+      "security_id": "test-plan-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "CA"
+        }
+      ],
+      "stakeholder_id": "test-stakeholder-id",
+      "stock_plan_id": "test-stock-plan-id",
+      "termination_exercise_windows": [
+        {
+          "period": 1,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_WITH_CAUSE"
+        }
+      ],
+      "vesting_terms_id": "4yr-1yr-cliff-schedule"
+    },
+    {
+      "date": "2020-01-01",
+      "id": "test-plan-security-id-vesting-start",
+      "object_type": "TX_VESTING_START",
+      "security_id": "test-plan-security-id",
+      "vesting_condition_id": "vesting-start"
+    },
+    {
+      "date": "2020-01-01",
+      "id": "founder-vest-acceleration-1",
+      "object_type": "TX_VESTING_ACCELERATION",
+      "quantity": "32458",
+      "reason_text": "Founder was terminated following change in control. 100% double-trigger acceleration.",
+      "security_id": "test-plan-security-id"
+    },
+    {
+      "board_approval_date": "2021-01-21",
+      "compensation_type": "OPTION",
+      "consideration_text": "1.00 USD",
+      "custom_id": "CA-1",
+      "date": "2019-12-12",
+      "exercise_price": {
+        "amount": "50.00",
+        "currency": "USD"
+      },
+      "expiration_date": "2031-01-20",
+      "id": "test-plan-security-issuance-any-of-block-for-compensation-type-option",
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "option_grant_type": "ISO",
+      "quantity": "50",
+      "security_id": "test-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "CA"
+        }
+      ],
+      "stakeholder_id": "test-stakeholder-id",
+      "stock_plan_id": "test-stock-plan-id",
+      "termination_exercise_windows": [
+        {
+          "period": 1,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_WITH_CAUSE"
+        }
+      ]
+    },
+    {
+      "board_approval_date": "2021-01-21",
+      "comments": [
+        "comment 1",
+        "comment 2",
+        "a third comment"
+      ],
+      "compensation_type": "RSU",
+      "consideration_text": "1.00 CAD",
+      "custom_id": "CA-1",
+      "date": "2019-12-12",
+      "exercise_price": {
+        "amount": "50.00",
+        "currency": "CAD"
+      },
+      "expiration_date": "2031-01-20",
+      "id": "test-plan-security-issuance-full-fields",
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "quantity": "100",
+      "security_id": "test-plan-security-issuance-full-fields",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "CA"
+        },
+        {
+          "description": "Extra special exemption",
+          "jurisdiction": "CA"
+        }
+      ],
+      "stakeholder_id": "test-stakeholder-id",
+      "stock_plan_id": "test-stock-plan-id",
+      "termination_exercise_windows": [
+        {
+          "period": 0,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_WITH_CAUSE"
+        },
+        {
+          "period": 3,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_GOOD_CAUSE"
+        },
+        {
+          "period": 14,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_OTHER"
+        },
+        {
+          "period": 3,
+          "period_type": "YEARS",
+          "reason": "INVOLUNTARY_DEATH"
+        },
+        {
+          "period": 3,
+          "period_type": "YEARS",
+          "reason": "INVOLUNTARY_DISABILITY"
+        },
+        {
+          "period": 1,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_RETIREMENT"
+        },
+        {
+          "period": 3,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_OTHER"
+        }
+      ],
+      "vesting_terms_id": "custom-vesting-100pct-upfront"
+    },
+    {
+      "board_approval_date": "2021-01-21",
+      "comments": [
+        "comment 1",
+        "comment 2",
+        "a third comment"
+      ],
+      "compensation_type": "RSU",
+      "consideration_text": "1.00 CAD",
+      "custom_id": "CA-1",
+      "date": "2019-12-12",
+      "exercise_price": {
+        "amount": "50.00",
+        "currency": "CAD"
+      },
+      "expiration_date": "2031-01-20",
+      "id": "test-equity-compensation-issuance-no-plan",
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "quantity": "100",
+      "security_id": "planless-equity-compensation-issuance",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "CA"
+        }
+      ],
+      "stakeholder_id": "test-stakeholder-id",
+      "stock_class_id": "common-stock",
+      "termination_exercise_windows": [
+        {
+          "period": 0,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_WITH_CAUSE"
+        },
+        {
+          "period": 3,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_GOOD_CAUSE"
+        },
+        {
+          "period": 14,
+          "period_type": "DAYS",
+          "reason": "INVOLUNTARY_OTHER"
+        },
+        {
+          "period": 3,
+          "period_type": "YEARS",
+          "reason": "INVOLUNTARY_DEATH"
+        },
+        {
+          "period": 3,
+          "period_type": "YEARS",
+          "reason": "INVOLUNTARY_DISABILITY"
+        },
+        {
+          "period": 1,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_RETIREMENT"
+        },
+        {
+          "period": 3,
+          "period_type": "MONTHS",
+          "reason": "VOLUNTARY_OTHER"
+        }
+      ],
+      "vesting_terms_id": "custom-vesting-100pct-upfront"
+    },
+    {
+      "comments": [
+        "100% up front due to custom vesting tranche"
+      ],
+      "date": "2021-01-11",
+      "id": "test-plan-security-issuance-full-fields-vesting-event",
+      "object_type": "TX_VESTING_EVENT",
+      "security_id": "test-plan-security-issuance-full-fields",
+      "vesting_condition_id": "full-vesting"
+    },
+    {
+      "date": "2017-07-22",
+      "id": "test-plan-security-release-minimal",
+      "object_type": "TX_PLAN_SECURITY_RELEASE",
+      "quantity": "9000",
+      "release_price": {
+        "amount": "9.00",
+        "currency": "CAD"
+      },
+      "resulting_security_ids": [],
+      "security_id": "387878ba-8fb6-4673-812e-32c092947899",
+      "settlement_date": "2017-07-22"
+    },
+    {
+      "comments": [
+        "Release the securities"
+      ],
+      "consideration_text": "9.00 CAD",
+      "date": "2017-07-22",
+      "id": "test-plan-security-release-full-fields",
+      "object_type": "TX_PLAN_SECURITY_RELEASE",
+      "quantity": "9000",
+      "release_price": {
+        "amount": "9.00",
+        "currency": "CAD"
+      },
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "387878ba-8fb6-4673-812e-32c092947899",
+      "settlement_date": "2017-07-25"
+    },
+    {
+      "date": "2022-01-24",
+      "id": "test-plan-security-retraction-minimal",
+      "object_type": "TX_PLAN_SECURITY_RETRACTION",
+      "reason_text": "We wish to make a retraction",
+      "security_id": "0f96b82a-6dc5-4205-bcb1-15740e5f8304"
+    },
+    {
+      "comments": [
+        "A",
+        "Series",
+        "Of",
+        "Comments"
+      ],
+      "date": "2022-01-24",
+      "id": "test-plan-security-retraction-full-fields",
+      "object_type": "TX_PLAN_SECURITY_RETRACTION",
+      "reason_text": "We wish to make a retraction",
+      "security_id": "0f96b82a-6dc5-4205-bcb1-15740e5f8304"
+    },
+    {
+      "date": "2001-01-01",
+      "id": "test-plan-security-transfer-minimal",
+      "object_type": "TX_PLAN_SECURITY_TRANSFER",
+      "quantity": "11",
+      "resulting_security_ids": [
+        "eiO9qSCztZ",
+        "feit2eP2NQ"
+      ],
+      "security_id": "0zHLfmI9G0"
+    },
+    {
+      "balance_security_id": "fyLFexlMGV",
+      "comments": [
+        "Comment"
+      ],
+      "consideration_text": "1.00 USD",
+      "date": "2001-01-01",
+      "id": "test-plan-security-transfer-full-fields",
+      "object_type": "TX_PLAN_SECURITY_TRANSFER",
+      "quantity": "11",
+      "resulting_security_ids": [
+        "eiO9qSCztZ",
+        "feit2eP2NQ"
+      ],
+      "security_id": "0zHLfmI9G0"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-acceptance-minimal",
+      "object_type": "TX_STOCK_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-acceptance-full-fields",
+      "object_type": "TX_STOCK_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-cancellation-minimal",
+      "object_type": "TX_STOCK_CANCELLATION",
+      "quantity": "37",
+      "reason_text": "Cancel the securities",
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "test-balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-cancellation-full-fields",
+      "object_type": "TX_STOCK_CANCELLATION",
+      "quantity": "37",
+      "reason_text": "Cancel the securities",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-conversion-minimal",
+      "object_type": "TX_STOCK_CONVERSION",
+      "quantity_converted": "1",
+      "resulting_security_ids": [
+        "resultant-security-id-1"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-conversion-full-fields",
+      "object_type": "TX_STOCK_CONVERSION",
+      "quantity_converted": "10",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2",
+        "resultant-security-id-3"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "cost_basis": {
+        "amount": "0",
+        "currency": "USD"
+      },
+      "custom_id": "S-1",
+      "date": "2022-02-01",
+      "id": "test-stock-issuance-minimal",
+      "object_type": "TX_STOCK_ISSUANCE",
+      "quantity": "1000",
+      "security_id": "test-security-id",
+      "security_law_exemptions": [],
+      "share_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "stakeholder_id": "stakeholder-id",
+      "stock_class_id": "stock-class-id",
+      "stock_legend_ids": [
+        "stock-legend-id-1",
+        "stock-legend-id-2"
+      ]
+    },
+    {
+      "cost_basis": {
+        "amount": "0",
+        "currency": "USD"
+      },
+      "custom_id": "S-1",
+      "date": "2022-02-01",
+      "id": "test-stock-issuance-minimal-RSA",
+      "issuance_type": "RSA",
+      "object_type": "TX_STOCK_ISSUANCE",
+      "quantity": "1000",
+      "security_id": "test-security-id",
+      "security_law_exemptions": [],
+      "share_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "stakeholder_id": "stakeholder-id",
+      "stock_class_id": "stock-class-id",
+      "stock_legend_ids": [
+        "stock-legend-id-1",
+        "stock-legend-id-2"
+      ],
+      "stock_plan_id": "2022-Plan",
+      "vesting_terms_id": "4yr-1yr-cliff-schedule"
+    },
+    {
+      "cost_basis": {
+        "amount": "0",
+        "currency": "USD"
+      },
+      "custom_id": "S-1",
+      "date": "2022-02-01",
+      "id": "test-stock-issuance-with-share-tracking",
+      "object_type": "TX_STOCK_ISSUANCE",
+      "quantity": "1000",
+      "security_id": "test-security-id",
+      "security_law_exemptions": [],
+      "share_numbers_issued": [
+        {
+          "ending_share_number": "1000",
+          "starting_share_number": "1"
+        }
+      ],
+      "share_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "stakeholder_id": "stakeholder-id",
+      "stock_class_id": "stock-class-id",
+      "stock_legend_ids": [
+        "stock-legend-id-1",
+        "stock-legend-id-2"
+      ]
+    },
+    {
+      "board_approval_date": "2022-02-01",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "1.00 USD and 2 tickets to Lion King",
+      "cost_basis": {
+        "amount": "0",
+        "currency": "USD"
+      },
+      "custom_id": "S-1",
+      "date": "2022-02-01",
+      "id": "test-stock-issuance-full-fields",
+      "object_type": "TX_STOCK_ISSUANCE",
+      "quantity": "1000",
+      "security_id": "test-stock-issuance-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "share_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "stakeholder_id": "stakeholder-id",
+      "stock_class_id": "stock-class-id",
+      "stock_legend_ids": [
+        "stock-legend-id-1",
+        "stock-legend-id-2"
+      ],
+      "vesting_terms_id": "4yr-1yr-cliff-schedule"
+    },
+    {
+      "date": "2021-01-10",
+      "id": "test-stock-issuance-security-id-vesting-start",
+      "object_type": "TX_VESTING_START",
+      "security_id": "test-stock-issuance-security-id",
+      "vesting_condition_id": "vesting-start"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-reissuance-minimal",
+      "object_type": "TX_STOCK_REISSUANCE",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2",
+        "resultant-security-id-3"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-reissuance-full-fields",
+      "object_type": "TX_STOCK_REISSUANCE",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2",
+        "resultant-security-id-3"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-repurchase-minimal",
+      "object_type": "TX_STOCK_REPURCHASE",
+      "price": {
+        "amount": "3.00",
+        "currency": "USD"
+      },
+      "quantity": "33",
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "3.00 CAD",
+      "date": "2022-02-01",
+      "id": "test-stock-repurchase-full-fields",
+      "object_type": "TX_STOCK_REPURCHASE",
+      "price": {
+        "amount": "3.00",
+        "currency": "USD"
+      },
+      "quantity": "33",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-retraction-minimal",
+      "object_type": "TX_STOCK_RETRACTION",
+      "reason_text": "Retract the stocks",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-retraction-full-fields",
+      "object_type": "TX_STOCK_RETRACTION",
+      "reason_text": "Retract the stocks",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "common-2-for-1-split",
+      "object_type": "TX_STOCK_CLASS_SPLIT",
+      "split_ratio": {
+        "denominator": "1",
+        "numerator": "2"
+      },
+      "stock_class_id": "8d8371e8-d41d-4a49-9f42-b91758fd155d"
+    },
+    {
+      "comments": [
+        "Broad-based anti-dilution repricing due to massive down-round. Calculated by Law Firms R Us LLP on November 1st, 2022."
+      ],
+      "date": "2022-11-02",
+      "id": "change-conversion-ratio-following-down-round",
+      "new_ratio_conversion_mechanism": {
+        "conversion_price": {
+          "amount": "0.20",
+          "currency": "USD"
+        },
+        "ratio": {
+          "denominator": "0.20",
+          "numerator": "1.00"
+        },
+        "rounding_type": "CEILING",
+        "type": "RATIO_CONVERSION"
+      },
+      "object_type": "TX_STOCK_CLASS_CONVERSION_RATIO_ADJUSTMENT",
+      "stock_class_id": "8d8371e8-d41d-4a49-9f42-b91758fd155d"
+    },
+    {
+      "board_approval_date": "2022-12-16",
+      "comments": [
+        "10,000,000 Series A Preferred shares were authorized for issuance and offered for sale, however only 9,365,000 were sold. Board authorized reduction in authorized shares to 9,365,000 shares."
+      ],
+      "date": "2022-12-16",
+      "id": "decrease-authorized-series-a-preferred-after-financing",
+      "new_shares_authorized": "9365000",
+      "object_type": "TX_STOCK_CLASS_AUTHORIZED_SHARES_ADJUSTMENT",
+      "stock_class_id": "series-a-preferred-stock"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-split-minimal",
+      "object_type": "TX_STOCK_REISSUANCE",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id",
+      "split_transaction_id": "test-split1-common"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-stock-split-full-fields",
+      "object_type": "TX_STOCK_REISSUANCE",
+      "reason_text": "Reissue due to 2-for-1 Common stock split",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id",
+      "split_transaction_id": "test-split1-common"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-stock-transfer-minimal",
+      "object_type": "TX_STOCK_TRANSFER",
+      "quantity": "10",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2",
+        "resultant-security-id-3"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "1.00 USD",
+      "date": "2022-02-01",
+      "id": "test-stock-transfer-full-fields",
+      "object_type": "TX_STOCK_TRANSFER",
+      "quantity": "10",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2",
+        "resultant-security-id-3"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-warrant-acceptance-minimal",
+      "object_type": "TX_WARRANT_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-warrant-acceptance-full-fields",
+      "object_type": "TX_WARRANT_ACCEPTANCE",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-warrant-cancellation-minimal",
+      "object_type": "TX_WARRANT_CANCELLATION",
+      "quantity": "1000",
+      "reason_text": "Warrant needs to be cancelled",
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-warrant-cancellation-full-fields",
+      "object_type": "TX_WARRANT_CANCELLATION",
+      "quantity": "1000",
+      "reason_text": "Warrant needs to be cancelled",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-warrant-exercise-minimal",
+      "object_type": "TX_WARRANT_EXERCISE",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id",
+      "trigger_id": "TRIGGER.1"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "1.23 USD",
+      "date": "2022-02-01",
+      "id": "test-warrant-exercise-full-fields",
+      "object_type": "TX_WARRANT_EXERCISE",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id",
+      "trigger_id": "TRIGGER.1"
+    },
+    {
+      "custom_id": "W-1",
+      "date": "2022-02-01",
+      "exercise_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "converts_to_quantity": "10000.00",
+              "type": "FIXED_AMOUNT_CONVERSION"
+            },
+            "converts_to_stock_class_id": "stock-class-id",
+            "type": "WARRANT_CONVERSION_RIGHT"
+          },
+          "nickname": "Automatic exercise immediately prior to qualified public offering",
+          "trigger_condition": "Qualified Public Offering means the issuance by the issuer or any direct or indirect parent of the issuer of its common Equity Interests in an underwritten primary public offering (other than a public offering pursuant to a registration statement on Form S-8) pursuant to an effective registration statement filed with the U.S. Securities and Exchange Commission in accordance with the Securities Act of 1933, as amended.",
+          "trigger_description": "Warrant shall be deemed exercise immediately prior to consummation to a qualified public offering.",
+          "trigger_id": "WARRANT-1.TRIG.1",
+          "type": "AUTOMATIC_ON_CONDITION"
+        }
+      ],
+      "id": "test-warrant-issuance-minimal",
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "purchase_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "quantity": "1000",
+      "quantity_source": "INSTRUMENT_FIXED",
+      "security_id": "test-warrant-id",
+      "security_law_exemptions": [],
+      "stakeholder_id": "stakeholder-id",
+      "warrant_expiration_date": "2032-02-01"
+    },
+    {
+      "custom_id": "W-1",
+      "date": "2022-02-01",
+      "exercise_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "converts_to_quantity": "10000.00",
+              "type": "FIXED_AMOUNT_CONVERSION"
+            },
+            "converts_to_stock_class_id": "stock-class-id",
+            "type": "WARRANT_CONVERSION_RIGHT"
+          },
+          "nickname": "Automatic exercise immediately prior to qualified public offering",
+          "trigger_condition": "Qualified Public Offering means the issuance by the issuer or any direct or indirect parent of the issuer of its common Equity Interests in an underwritten primary public offering (other than a public offering pursuant to a registration statement on Form S-8) pursuant to an effective registration statement filed with the U.S. Securities and Exchange Commission in accordance with the Securities Act of 1933, as amended.",
+          "trigger_description": "Warrant shall be deemed exercise immediately prior to consummation to a qualified public offering.",
+          "trigger_id": "WARRANT-1.TRIG.1",
+          "type": "AUTOMATIC_ON_CONDITION"
+        }
+      ],
+      "id": "test-warrant-issuance-minimal-estimated-quant",
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "purchase_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "quantity": "1000",
+      "quantity_source": "HUMAN_ESTIMATED",
+      "security_id": "test-warrant-id",
+      "security_law_exemptions": [],
+      "stakeholder_id": "stakeholder-id",
+      "warrant_expiration_date": "2032-02-01"
+    },
+    {
+      "board_approval_date": "2022-02-01",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "1.00 USD",
+      "custom_id": "W-2",
+      "date": "2022-02-01",
+      "exercise_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "converts_to_quantity": "1000.00",
+              "type": "FIXED_AMOUNT_CONVERSION"
+            },
+            "converts_to_stock_class_id": "stock-class-id",
+            "type": "WARRANT_CONVERSION_RIGHT"
+          },
+          "end_date": "2032-02-01",
+          "nickname": "Exercisable Until Expiration",
+          "start_date": "2010-01-01",
+          "trigger_description": "The warrant is exercisable from its date of issuance until its expiration on February 2, 2032.",
+          "trigger_id": "WARRANT-1.TRIG.1",
+          "type": "ELECTIVE_IN_RANGE"
+        }
+      ],
+      "id": "test-warrant-issuance-full-fields",
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "purchase_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "quantity": "1000",
+      "security_id": "test-warrant-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "stakeholder_id": "stakeholder-id",
+      "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "warrant_expiration_date": "2032-02-01"
+    },
+    {
+      "board_approval_date": "2022-02-01",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "1.00 USD",
+      "custom_id": "W-2",
+      "date": "2022-02-01",
+      "exercise_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "type": "VALUATION_BASED_CONVERSION",
+              "valuation_amount": {
+                "amount": "1000000000.00",
+                "currency": "USD"
+              },
+              "valuation_type": "CAP"
+            },
+            "converts_to_future_round": true,
+            "type": "WARRANT_CONVERSION_RIGHT"
+          },
+          "nickname": "Exercised at next financing",
+          "trigger_condition": "This warrant will be automatically exercised upon the closing of the Company's next preferred equity financing with total proceeds in excess of $100,000,000.00",
+          "trigger_description": "The warrant automatically exercises at the next financing with conversion amount determined by the valuation in the financing.",
+          "trigger_id": "WARRANT-1.FINANCING-TRIG",
+          "type": "AUTOMATIC_ON_CONDITION"
+        }
+      ],
+      "id": "test-valuation-based-warrant-issuance-full-fields",
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "purchase_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "quantity": "1000",
+      "security_id": "test-warrant-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "stakeholder_id": "stakeholder-id",
+      "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "warrant_expiration_date": "2032-02-01"
+    },
+    {
+      "board_approval_date": "2022-02-01",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "100,000.00 USD",
+      "custom_id": "W-2",
+      "date": "2022-02-01",
+      "exercise_triggers": [
+        {
+          "conversion_right": {
+            "conversion_mechanism": {
+              "description": "The Holder is entitled, at the next Qualified Financing, to purchase from the Company such number of Preferred Shares as are equal to $100,000 divided by the Exercise Price. 'Exercise Price' shall mean the price per share paid by the investors in the next Qualified Financing less $1.12, unless such price is less than $1.12, in which case the Exercise Price shall be $0.01.",
+              "discount": true,
+              "discount_amount": {
+                "amount": "1.12",
+                "currency": "USD"
+              },
+              "type": "PPS_BASED_CONVERSION"
+            },
+            "converts_to_future_round": true,
+            "type": "WARRANT_CONVERSION_RIGHT"
+          },
+          "nickname": "Exercised at next qualified financing",
+          "trigger_condition": "This warrant will be automatically exercised upon the closing of the Company's next preferred equity financing with total proceeds in excess of $100,000,000.00",
+          "trigger_description": "The warrant automatically exercises at the next financing with conversion amount determined by the valuation in the financing.",
+          "trigger_id": "WARRANT-1.FINANCING-TRIG",
+          "type": "AUTOMATIC_ON_CONDITION"
+        }
+      ],
+      "id": "test-pps-based-warrant-issuance-full-fields",
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "purchase_price": {
+        "amount": "100000.00",
+        "currency": "USD"
+      },
+      "security_id": "test-warrant-security-id",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "US"
+        }
+      ],
+      "stakeholder_id": "stakeholder-id",
+      "warrant_expiration_date": "2032-02-01"
+    },
+    {
+      "date": "2021-01-10",
+      "id": "test-warrant-security-id-vesting-start",
+      "object_type": "TX_VESTING_START",
+      "security_id": "test-warrant-security-id",
+      "vesting_condition_id": "vesting-start"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-warrant-retraction-minimal",
+      "object_type": "TX_WARRANT_RETRACTION",
+      "reason_text": "Need to retract",
+      "security_id": "test-security-id"
+    },
+    {
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "date": "2022-02-01",
+      "id": "test-warrant-retraction-full-fields",
+      "object_type": "TX_WARRANT_RETRACTION",
+      "reason_text": "Need to retract",
+      "security_id": "test-security-id"
+    },
+    {
+      "date": "2022-02-01",
+      "id": "test-warrant-transfer-minimal",
+      "object_type": "TX_WARRANT_TRANSFER",
+      "quantity": "10000",
+      "resulting_security_ids": [
+        "resultant-security-id-1"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "balance_security_id": "balance-security-id",
+      "comments": [
+        "Here is a comment",
+        "Here is another comment"
+      ],
+      "consideration_text": "0.50 USD",
+      "date": "2022-02-01",
+      "id": "test-warrant-transfer-full-fields",
+      "object_type": "TX_WARRANT_TRANSFER",
+      "quantity": "10000",
+      "resulting_security_ids": [
+        "resultant-security-id-1",
+        "resultant-security-id-2"
+      ],
+      "security_id": "test-security-id"
+    },
+    {
+      "board_approval_date": "2022-11-14",
+      "comments": [
+        "Increased for upcoming financing."
+      ],
+      "date": "2022-11-14",
+      "id": "increase_sop_pool",
+      "object_type": "TX_STOCK_PLAN_POOL_ADJUSTMENT",
+      "shares_reserved": "100000000",
+      "stock_plan_id": "2022 Stock Option Plan",
+      "stockholder_approval_date": "2022-11-14"
+    }
+  ]
+}

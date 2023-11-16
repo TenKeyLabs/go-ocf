@@ -1,0 +1,395 @@
+{
+  "file_type": "OCF_VESTING_TERMS_FILE",
+  "items": [
+    {
+      "allocation_type": "CUMULATIVE_ROUNDING",
+      "description": "25% of the total number of shares shall vest on the one-year anniversary of this Agreement, and an additional 1/48th of the total number of Shares shall then vest on the corresponding day of each month thereafter, until all of the Shares have been released on the fourth anniversary of this Agreement.",
+      "id": "4yr-1yr-cliff-schedule",
+      "name": "Four Year / One Year Cliff",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "id": "vesting-start",
+          "next_condition_ids": [
+            "cliff"
+          ],
+          "quantity": "0",
+          "trigger": {
+            "type": "VESTING_START_DATE"
+          }
+        },
+        {
+          "description": "25% payout at 1 year",
+          "id": "cliff",
+          "next_condition_ids": [
+            "monthly-thereafter"
+          ],
+          "portion": {
+            "denominator": "48",
+            "numerator": "12"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 12,
+              "occurrences": 1,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "vesting-start",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "1/48th payout each month thereafter",
+          "id": "monthly-thereafter",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "48",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 1,
+              "occurrences": 36,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "cliff",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        }
+      ]
+    },
+    {
+      "allocation_type": "CUMULATIVE_ROUND_DOWN",
+      "description": "20% of the options vest each time a sale is made in excess of $100,000 in the aggregate, so long as such sale is made prior to Noon Eastern 4 years from vesting commencement.",
+      "id": "multi-tranche-event-based",
+      "name": "Multi-tranche, event-based with 100%, double-trigger acceleration",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "id": "vesting-start",
+          "next_condition_ids": [
+            "vesting-expired",
+            "double-trigger-acceleration",
+            "100k-sale-1"
+          ],
+          "quantity": "0",
+          "trigger": {
+            "type": "VESTING_START_DATE"
+          }
+        },
+        {
+          "id": "vesting-expired",
+          "next_condition_ids": [],
+          "quantity": "0",
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 48,
+              "occurrences": 1,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "vesting-start",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "id": "double-trigger-acceleration",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "1",
+            "numerator": "1",
+            "remainder": true
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "id": "100k-sale-1",
+          "next_condition_ids": [
+            "vesting-expired",
+            "double-trigger-acceleration",
+            "100k-sale-2"
+          ],
+          "portion": {
+            "denominator": "100",
+            "numerator": "20"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "id": "100k-sale-2",
+          "next_condition_ids": [
+            "vesting-expired",
+            "double-trigger-acceleration",
+            "100k-sale-3"
+          ],
+          "portion": {
+            "denominator": "100",
+            "numerator": "20"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "id": "100k-sale-3",
+          "next_condition_ids": [
+            "vesting-expired",
+            "double-trigger-acceleration",
+            "100k-sale-4"
+          ],
+          "portion": {
+            "denominator": "100",
+            "numerator": "20"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "id": "100k-sale-4",
+          "next_condition_ids": [
+            "vesting-expired",
+            "double-trigger-acceleration",
+            "100k-sale-5"
+          ],
+          "portion": {
+            "denominator": "100",
+            "numerator": "20"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "id": "100k-sale-5",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "100",
+            "numerator": "20"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        }
+      ]
+    },
+    {
+      "allocation_type": "CUMULATIVE_ROUND_DOWN",
+      "description": "100% of the options vest on a security-specific date",
+      "id": "custom-vesting-100pct-upfront",
+      "name": "Custom terms object specifically for test-plan-security-issuance-full-fields",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "id": "full-vesting",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        }
+      ]
+    },
+    {
+      "allocation_type": "BACK_LOADED",
+      "description": "Grant vests at a rate of 10% of the original number of shares on the 24th month; then vests 1.25% for 12 months; 1.67% for 12 months; 2.08% for 12 months; and 2.5% for 12 months",
+      "id": "6-yr-option-back-loaded",
+      "name": "Six Year Option - Back Loaded",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "id": "vesting-start",
+          "next_condition_ids": [
+            "10pct-after-24-months"
+          ],
+          "quantity": "0",
+          "trigger": {
+            "type": "VESTING_START_DATE"
+          }
+        },
+        {
+          "description": "10% payout at 2 years",
+          "id": "10pct-after-24-months",
+          "next_condition_ids": [
+            "1.25pct-each-month-for-12-months"
+          ],
+          "portion": {
+            "denominator": "10",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 24,
+              "occurrences": 1,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "vesting-start",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "1.25% payout each month for 12 months",
+          "id": "1.25pct-each-month-for-12-months",
+          "next_condition_ids": [
+            "1.67pct-each-month-for-12-months"
+          ],
+          "portion": {
+            "denominator": "80",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 1,
+              "occurrences": 12,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "10pct-after-24-months",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "1.67% payout each month for 12 months",
+          "id": "1.67pct-each-month-for-12-months",
+          "next_condition_ids": [
+            "2.08pct-each-month-for-12-months"
+          ],
+          "portion": {
+            "denominator": "60",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 1,
+              "occurrences": 12,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "1.25pct-each-month-for-12-months",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "2.08% payout each month for 12 months",
+          "id": "2.08pct-each-month-for-12-months",
+          "next_condition_ids": [
+            "2.5pct-each-month-for-12-months"
+          ],
+          "portion": {
+            "denominator": "48",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 1,
+              "occurrences": 12,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "1.67pct-each-month-for-12-months",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        },
+        {
+          "description": "2.5% payout each month for 12 months",
+          "id": "2.5pct-each-month-for-12-months",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "40",
+            "numerator": "1"
+          },
+          "trigger": {
+            "period": {
+              "day_of_month": "VESTING_START_DAY_OR_LAST_DAY_OF_MONTH",
+              "length": 1,
+              "occurrences": 12,
+              "type": "MONTHS"
+            },
+            "relative_to_condition_id": "2.08pct-each-month-for-12-months",
+            "type": "VESTING_SCHEDULE_RELATIVE"
+          }
+        }
+      ]
+    },
+    {
+      "allocation_type": "CUMULATIVE_ROUNDING",
+      "description": "1. 60% of the shares subject to the Stock Option shall vest and become immediately exercisable upon the FDA’s acceptance of an IND application submitted by the Company relating to the Program; provided, that such acceptance occurs on or before September 30, 2016, and the Warrant Exercise has not occurred prior to such date (the \"Qualified FDA Acceptance\")\n2. Provided that the Warrant Exercise has not occurred, an additional 40% of the Shares subject to this option shall vest and become immediately exercisable upon the closing of an Acquisition (as defined below) of the Company by a third party at a Purchase Price (as defined below)that is equal to or greater than $30,000,000 (a \"Qualified Acquisition\"); provided, that (i) the Qualified FDA Acceptance occurs prior to the closing of such Qualified Acquisition and (ii) the closing of such Qualified Acquisition occurs on or prior to March 31, 2017.",
+      "id": "path-dependent-milestone-vesting",
+      "name": "Path-Dependent Milestone Vesting",
+      "object_type": "VESTING_TERMS",
+      "vesting_conditions": [
+        {
+          "description": "vesting start date",
+          "id": "vest-start",
+          "next_condition_ids": [
+            "fda-acceptance-deadline-missed",
+            "qualified-fda-acceptance"
+          ],
+          "quantity": "0",
+          "trigger": {
+            "type": "VESTING_START_DATE"
+          }
+        },
+        {
+          "description": "60% of the shares subject to the Stock Option shall vest and become immediately exercisable upon the FDA’s acceptance of an IND application submitted by the Company relating to the Program; provided, that such acceptance occurs on or before September 30, 2016, and the Warrant Exercise has not occurred prior to such date (the \"Qualified FDA Acceptance\"",
+          "id": "qualified-fda-acceptance",
+          "next_condition_ids": [
+            "acquisition-deadline-missed",
+            "qualified-acquisition"
+          ],
+          "portion": {
+            "denominator": "100",
+            "numerator": "60",
+            "remainder": false
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "description": "Provided that the Warrant Exercise has not occurred, an additional 40% of the Shares subject to this option shall vest and become immediately exercisable upon the closing of an Acquisition (as defined below) of the Company by a third party at a Purchase Price (as defined below)that is equal to or greater than $30,000,000 (a \"Qualified Acquisition\"); provided, that (i) the Qualified FDA Acceptance occurs prior to the closing of such Qualified Acquisition and (ii) the closing of such Qualified Acquisition occurs on or prior to March 31, 2017.",
+          "id": "qualified-acquisition",
+          "next_condition_ids": [],
+          "portion": {
+            "denominator": "100",
+            "numerator": "40",
+            "remainder": false
+          },
+          "trigger": {
+            "type": "VESTING_EVENT"
+          }
+        },
+        {
+          "description": "Qualified FDA acceptance does not occur on or before September 30, 2016",
+          "id": "fda-acceptance-deadline-missed",
+          "next_condition_ids": [],
+          "quantity": "0",
+          "trigger": {
+            "date": "2016-10-01",
+            "type": "VESTING_SCHEDULE_ABSOLUTE"
+          }
+        },
+        {
+          "description": "Qualified Acquisition does not occur on or before March 31, 2017",
+          "id": "acquisition-deadline-missed",
+          "next_condition_ids": [],
+          "quantity": "0",
+          "trigger": {
+            "date": "2017-04-01",
+            "type": "VESTING_SCHEDULE_ABSOLUTE"
+          }
+        }
+      ]
+    }
+  ]
+}
