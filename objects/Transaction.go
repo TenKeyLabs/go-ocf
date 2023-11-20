@@ -117,4 +117,7 @@ type Transaction struct {
 	OptionGrantType *enums.OptionType `json:"option_grant_type,omitempty"`
 	// The identifier of the existing, known stock class this stock class can convert into
 	ConvertsToStockClassID *string `json:"converts_to_stock_class_id,omitempty"`
+	// If the equity compensation was issued from a plan (don't forget, plan-less options are a
+	// thing), what is the plan id.
+	StockPlanID *string `json:"stock_plan_id,omitempty"`
 }
