@@ -1,0 +1,19 @@
+{
+  "file_type": "OCF_STOCK_PLANS_FILE",
+  "items": [
+    {
+      "id": "fc4e605e-4996-4311-b97b-0c38ca229811",
+      "object_type": "STOCK_PLAN",
+      "plan_name": "Common Stock Options Plan",
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "initial_shares_reserved": "30000"
+    },
+    {
+      "id": "5FAEE4C8-63E9-405D-8652-97D3CF9E0E9C",
+      "object_type": "STOCK_PLAN",
+      "plan_name": "Preferred Stock Options Plan",
+      "stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20",
+      "initial_shares_reserved": "15000"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "file_type": "OCF_STAKEHOLDERS_FILE",
+  "items": [
+    {
+      "object_type": "STAKEHOLDER",
+      "id": "aceb81e6-2d19-4ef2-ac53-05ff210d3508",
+      "name": {
+        "legal_name": "Alfred Frank Johnson"
+      },
+      "stakeholder_type": "INDIVIDUAL"
+    },
+    {
+      "object_type": "STAKEHOLDER",
+      "id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "name": {
+        "legal_name": "Benjamin & Sons"
+      },
+      "stakeholder_type": "INSTITUTION"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "file_type": "OCF_VALUATIONS_FILE",
+  "items": [
+    {
+      "effective_date": "2022-01-01",
+      "id": "6044CF46-DD27-4487-A46F-24926B3E348B",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-01-01",
+      "stockholder_approval_date": "2022-01-01",
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "valuation_type": "409A",
+      "comments": ["Initial Common Non-Voting Valuation"]
+    },
+    {
+      "effective_date": "2022-01-01",
+      "id": "CB2CE82A-27A7-48BE-9B85-7248D8F01E87",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-01-01",
+      "stockholder_approval_date": "2022-01-01",
+      "stock_class_id": "0140DCC4-10AD-4C71-A6BD-4AD5FC44A63D",
+      "valuation_type": "409A",
+      "comments": ["Initial Common Voting Valuation"]
+    },
+    {
+      "effective_date": "2022-01-01",
+      "id": "D44A7177-D702-4489-9DFE-DADB34424B0D",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-01-01",
+      "stockholder_approval_date": "2022-01-01",
+      "stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20",
+      "valuation_type": "409A",
+      "comments": ["Initial Preferred Valuation"]
+    },
+    {
+      "effective_date": "2023-01-01",
+      "id": "6D044C65-CAFD-40FB-BB48-64BC48CFF164",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.50",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-12-21",
+      "stockholder_approval_date": "2022-12-21",
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "valuation_type": "409A",
+      "comments": ["Updated Valuation, EOY 2022"]
+    },
+    {
+      "effective_date": "2023-01-01",
+      "id": "11ED9D95-F993-48B8-865C-A2B809D57D73",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.75",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-12-21",
+      "stockholder_approval_date": "2022-12-21",
+      "stock_class_id": "0140DCC4-10AD-4C71-A6BD-4AD5FC44A63D",
+      "valuation_type": "409A",
+      "comments": ["Updated Valuation, EOY 2022"]
+    },
+    {
+      "effective_date": "2023-01-01",
+      "id": "A8FF08E6-061A-4127-AC56-1DA90C5203DF",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "board_approval_date": "2022-12-21",
+      "stockholder_approval_date": "2022-12-21",
+      "stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20",
+      "valuation_type": "409A",
+      "comments": ["Updated Valuation, EOY 2022"]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "file_type": "OCF_VALUATIONS_FILE",
+  "items": [
+    {
+      "effective_date": "2022-01-01",
+      "id": "6044CF46-DD27-4487-A46F-24926B3E348B",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "valuation_type": "409A",
+      "comments": ["Initial Common Shares Valuation"]
+    },
+    {
+      "effective_date": "2022-01-01",
+      "id": "6044CF46-DD27-4487-A46F-24926B3E348B",
+      "object_type": "VALUATION",
+      "price_per_share": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20",
+      "valuation_type": "409A",
+      "comments": ["Initial Preferred Shares Valuation"]
+    }
+  ]
+}
