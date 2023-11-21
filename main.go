@@ -30,6 +30,7 @@ type ocfFileContent[T any] struct {
 func parseOcfResources() (OcfResources, error) {
 	// Read the manifest file
 	folderPath := "samples/tkl-realistic"
+
 	ocfManifestFileJson, err := os.ReadFile(fmt.Sprintf("%v/manifest.ocf.json", folderPath))
 	if err != nil {
 		return OcfResources{}, fmt.Errorf("unable to parse ocf manifest: %w", err)
