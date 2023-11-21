@@ -412,7 +412,7 @@
     },
     {
       "allocation_type": "CUMULATIVE_ROUNDING",
-      "description": "4yr with no cliff, Gunderson Sample",
+      "description": "4yr with no cliff, GD",
       "id": "4yr-no-cliff",
       "name": "4yr with no Cliff - GD",
       "object_type": "VESTING_TERMS",

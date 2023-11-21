@@ -1,4 +1,148 @@
 {
   "file_type": "OCF_TRANSACTIONS_FILE",
-  "items": []
+  "items": [
+    {
+      "object_type": "TX_STOCK_ISSUANCE",
+      "id": "founder-common-shares-issuance",
+      "security_id": "68543762-ACCE-4D75-80B2-627EF312EF7D",
+      "date": "2022-01-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "aceb81e6-2d19-4ef2-ac53-05ff210d3508",
+      "custom_id": "CS-1",
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "share_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "quantity": "500000",
+      "stock_legend_ids": ["f04e7c40-0a64-4d2e-9208-8828098d73d5"]
+    },
+    {
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "id": "investor-safe-issuance",
+      "security_id": "401A0D7E-9DF9-4D26-A2C3-4D896E49D7D8",
+      "date": "2022-03-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "custom_id": "SAFE-1",
+      "investment_amount": {
+        "amount": "1000000.00",
+        "currency": "USD"
+      },
+      "convertible_type": "SAFE",
+      "conversion_triggers": [
+        {
+          "trigger_id": "6EFF0545-F978-4381-A260-B06ABA6BD9C9",
+          "nickname": "Next Financing",
+          "type": "AUTOMATIC_ON_CONDITION",
+          "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
+          "conversion_right": {
+            "type": "CONVERTIBLE_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "SAFE_CONVERSION",
+              "conversion_timing": "PRE_MONEY",
+              "conversion_mfn": false
+            },
+            "converts_to_future_round": true
+          }
+        }
+      ],
+      "seniority": 1
+    },
+    {
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "id": "investor-convertible-note-issuance",
+      "security_id": "C5958242-987F-4837-AAD9-451B666CA8B2",
+      "date": "2022-06-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "custom_id": "CN-1",
+      "investment_amount": {
+        "amount": "500000.00",
+        "currency": "USD"
+      },
+      "convertible_type": "NOTE",
+      "conversion_triggers": [
+        {
+          "trigger_id": "99BFB280-D095-4698-9F7F-12388F2CEE65",
+          "nickname": "Converts on Maturity",
+          "type": "AUTOMATIC_ON_DATE",
+          "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
+          "conversion_right": {
+            "type": "CONVERTIBLE_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "CONVERTIBLE_NOTE_CONVERSION",
+              "interest_rates": [
+                {
+                  "rate": "0.0899",
+                  "accrual_start_date": "2022-06-01"
+                }
+              ],
+              "day_count_convention": "ACTUAL_365",
+              "interest_payout": "CASH",
+              "interest_accrual_period": "MONTHLY",
+              "compounding_type": "COMPOUNDING"
+            }
+          }
+        }
+      ],
+      "seniority": 1
+    },
+    {
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "id": "investor-warrant-issuance",
+      "security_id": "48B15D86-882A-4235-88A8-838B8C55BEFB",
+      "date": "2022-06-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "custom_id": "WARR-1",
+      "purchase_price": {
+        "amount": "250000.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "trigger_id": "735CC398-8EED-4905-B5F1-B9993D333739",
+          "nickname": "Exercisable within specific date range",
+          "type": "ELECTIVE_IN_RANGE",
+          "start_date": "2025-01-01",
+          "end_date": "2025-03-01",
+          "conversion_right": {
+            "type": "WARRANT_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "PPS_BASED_CONVERSION",
+              "description": "The Holder is entitled, during the Exercise Period, to purchase from the Company such number of Preferred Shares as are equal to $100,000 divided by the Exercise Price. 'Exercise Price' shall mean 80% of the price per share paid by the investors in the next Qualified Financing."
+            }
+          }
+        }
+      ],
+      "seniority": 1
+    },
+    {
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "id": "founder-retention-plan-security-issuance",
+      "security_id": "044CE355-9212-46A0-A874-1AE2775D4380",
+      "date": "2022-01-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "aceb81e6-2d19-4ef2-ac53-05ff210d3508",
+      "custom_id": "CSOP-1",
+      "stock_plan_id": "fc4e605e-4996-4311-b97b-0c38ca229811",
+      "compensation_type": "OPTION",
+      "quantity": "5000",
+      "exercise_price": {
+        "amount": "1.00",
+        "currency": "USD"
+      },
+      "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "expiration_date": "2032-01-01",
+      "termination_exercise_windows": []
+    },
+    {
+      "id": "3B1F65A4-4B9A-41B4-85EE-646E7174E4D5",
+      "object_type": "TX_VESTING_START",
+      "date": "2022-01-01",
+      "security_id": "044CE355-9212-46A0-A874-1AE2775D4380",
+      "vesting_condition_id": "vesting-start"
+    }
+  ]
 }

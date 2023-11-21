@@ -1,4 +1,231 @@
 {
   "file_type": "OCF_TRANSACTIONS_FILE",
-  "items": []
+  "items": [
+    {
+      "object_type": "TX_STOCK_ISSUANCE",
+      "id": "founder-common-shares-issuance",
+      "security_id": "68543762-ACCE-4D75-80B2-627EF312EF7D",
+      "date": "2022-01-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "aceb81e6-2d19-4ef2-ac53-05ff210d3508",
+      "custom_id": "CS-1",
+      "stock_class_id": "A42B7615-6166-4BC9-AADE-E61136F0358B",
+      "share_price": {
+        "amount": "0.01",
+        "currency": "USD"
+      },
+      "cost_basis": {
+        "amount": "5000",
+        "currency": "USD"
+      },
+      "quantity": "500000",
+      "stock_legend_ids": ["f04e7c40-0a64-4d2e-9208-8828098d73d5"]
+    },
+    {
+      "object_type": "TX_STOCK_ISSUANCE",
+      "id": "founder-preferred-shares-issuance",
+      "security_id": "73A764B0-BFA7-4551-91C9-B9E53F1FEF44",
+      "date": "2022-01-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "aceb81e6-2d19-4ef2-ac53-05ff210d3508",
+      "custom_id": "PS-1",
+      "stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20",
+      "share_price": {
+        "amount": "0.001",
+        "currency": "USD"
+      },
+      "cost_basis": {
+        "amount": "1000",
+        "currency": "USD"
+      },
+      "vesting_terms_id": "4yr-no-cliff",
+      "quantity": "1000000",
+      "stock_legend_ids": ["1B3F5D67-9A4A-463A-8CF6-6DBC4E3C44DC"]
+    },
+    {
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "comments": ["Test SAFE investment", "Founder accelerator network"],
+      "id": "angel-investor-safe-issuance",
+      "security_id": "401A0D7E-9DF9-4D26-A2C3-4D896E49D7D8",
+      "date": "2022-03-01",
+      "board_approval_date": "2022-03-05",
+      "security_law_exemptions": [],
+      "stakeholder_id": "73F2E094-B92F-4D83-BAF3-916F2514C7EB",
+      "custom_id": "SAFE-1",
+      "investment_amount": {
+        "amount": "100000.00",
+        "currency": "USD"
+      },
+      "convertible_type": "SAFE",
+      "conversion_triggers": [
+        {
+          "trigger_id": "6EFF0545-F978-4381-A260-B06ABA6BD9C9",
+          "nickname": "Next Financing",
+          "type": "AUTOMATIC_ON_CONDITION",
+          "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
+          "conversion_right": {
+            "type": "CONVERTIBLE_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "SAFE_CONVERSION",
+              "conversion_timing": "PRE_MONEY",
+              "conversion_mfn": false,
+              "conversion_valuation_cap": {
+                "amount": "20000000",
+                "currency": "CAD"
+              },
+              "conversion_discount": "0.85"
+            },
+            "converts_to_future_round": true
+          }
+        }
+      ],
+      "pro_rata": "2500",
+      "seniority": 2
+    },
+    {
+      "object_type": "TX_CONVERTIBLE_ISSUANCE",
+      "id": "institutional-investor-convertible-note-issuance",
+      "security_id": "C5958242-987F-4837-AAD9-451B666CA8B2",
+      "date": "2022-06-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "custom_id": "CN-1",
+      "investment_amount": {
+        "amount": "500000.00",
+        "currency": "USD"
+      },
+      "convertible_type": "NOTE",
+      "conversion_triggers": [
+        {
+          "trigger_id": "99BFB280-D095-4698-9F7F-12388F2CEE65",
+          "nickname": "Converts on Maturity",
+          "type": "AUTOMATIC_ON_DATE",
+          "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
+          "conversion_right": {
+            "type": "CONVERTIBLE_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "CONVERTIBLE_NOTE_CONVERSION",
+              "interest_rates": [
+                {
+                  "rate": "0.0899",
+                  "accrual_start_date": "2022-06-01"
+                }
+              ],
+              "conversion_discount": "0.80",
+              "conversion_valuation_cap": {
+                "amount": "18750000.00",
+                "currency": "USD"
+              },
+              "conversion_mfn": true,
+              "day_count_convention": "ACTUAL_365",
+              "interest_payout": "CASH",
+              "interest_accrual_period": "MONTHLY",
+              "compounding_type": "COMPOUNDING"
+            }
+          }
+        }
+      ],
+      "seniority": 1
+    },
+    {
+      "object_type": "TX_WARRANT_ISSUANCE",
+      "id": "institutional-investor-warrant-issuance",
+      "security_id": "48B15D86-882A-4235-88A8-838B8C55BEFB",
+      "date": "2022-06-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
+      "custom_id": "WARR-1",
+      "purchase_price": {
+        "amount": "250000.00",
+        "currency": "USD"
+      },
+      "exercise_triggers": [
+        {
+          "trigger_id": "735CC398-8EED-4905-B5F1-B9993D333739",
+          "nickname": "Exercisable within specific date range",
+          "type": "ELECTIVE_IN_RANGE",
+          "start_date": "2025-01-01",
+          "end_date": "2025-03-01",
+          "conversion_right": {
+            "type": "WARRANT_CONVERSION_RIGHT",
+            "conversion_mechanism": {
+              "type": "PPS_BASED_CONVERSION",
+              "description": "The Holder is entitled, during the Exercise Period, to purchase from the Company such number of Preferred Shares as are equal to $100,000 divided by the Exercise Price. 'Exercise Price' shall mean 80% of the price per share paid by the investors in the next Qualified Financing."
+            }
+          }
+        }
+      ],
+      "seniority": 1
+    },
+    {
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "id": "employee-retention-plan-security-issuance-carlos",
+      "security_id": "044CE355-9212-46A0-A874-1AE2775D4380",
+      "date": "2022-04-01",
+      "security_law_exemptions": [
+        {
+          "description": "Exemption",
+          "jurisdiction": "CA"
+        }
+      ],
+      "stakeholder_id": "73F2E094-B92F-4D83-BAF3-916F2514C7EB",
+      "custom_id": "CSOP-1",
+      "stock_plan_id": "fc4e605e-4996-4311-b97b-0c38ca229811",
+      "compensation_type": "OPTION",
+      "quantity": "2500",
+      "exercise_price": {
+        "amount": "0.05",
+        "currency": "USD"
+      },
+      "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "expiration_date": "2027-04-01",
+      "termination_exercise_windows": []
+    },
+    {
+      "object_type": "TX_PLAN_SECURITY_ISSUANCE",
+      "id": "employee-retention-plan-security-issuance-emilia",
+      "security_id": "06F5F827-76BF-4FA4-AFA7-37E9360B9A9E",
+      "date": "2022-06-01",
+      "security_law_exemptions": [],
+      "stakeholder_id": "E769AB04-3E01-421D-9EBD-C33988CA8A6D",
+      "custom_id": "CSOP-2",
+      "stock_plan_id": "fc4e605e-4996-4311-b97b-0c38ca229811",
+      "compensation_type": "OPTION_ISO",
+      "quantity": "4000",
+      "exercise_price": {
+        "amount": "0.05",
+        "currency": "USD"
+      },
+      "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "expiration_date": "2032-06-01",
+      "termination_exercise_windows": [
+        {
+          "reason": "INVOLUNTARY_WITH_CAUSE",
+          "period": 10,
+          "period_type": "DAYS"
+        }
+      ]
+    },
+    {
+      "id": "66D550B6-4A52-43E9-8458-8AB897B5AFC4",
+      "object_type": "TX_VESTING_START",
+      "date": "2022-01-01",
+      "security_id": "73A764B0-BFA7-4551-91C9-B9E53F1FEF44",
+      "vesting_condition_id": "4yr with no Cliff/100%; all times after CiC/100% of unvested; Involuntary Termination within 12 months after CiC | Start"
+    },
+    {
+      "id": "701F992B-EB41-40C1-8BBB-2F323DA78FEA",
+      "object_type": "TX_VESTING_START",
+      "date": "2022-04-01",
+      "security_id": "044CE355-9212-46A0-A874-1AE2775D4380",
+      "vesting_condition_id": "vesting-start"
+    },
+    {
+      "id": "B4F880C6-FB3C-416F-8662-1A4EE8FC422A",
+      "object_type": "TX_VESTING_START",
+      "date": "2022-06-01",
+      "security_id": "06F5F827-76BF-4FA4-AFA7-37E9360B9A9E",
+      "vesting_condition_id": "vesting-start"
+    }
+  ]
 }

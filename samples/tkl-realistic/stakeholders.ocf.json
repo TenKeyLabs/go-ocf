@@ -95,6 +95,46 @@
       "addresses": [
         {
           "address_type": "LEGAL",
+          "city": "Big City",
+          "country": "US",
+          "country_subdivision": "TX",
+          "postal_code": "23456",
+          "street_suite": "345 Investor Avenue\nApt 21"
+        }
+      ],
+      "comments": ["Test Stakeholder"],
+      "current_relationship": "INVESTOR",
+      "id": "73F2E094-B92F-4D83-BAF3-916F2514C7EB",
+      "name": {
+        "legal_name": "Angelo Raphael",
+        "first_name": "Angelo",
+        "last_name": "Raphael"
+      },
+      "object_type": "STAKEHOLDER",
+      "contact_info": {
+        "emails": [
+          {
+            "email_address": "raphael@angel.com",
+            "email_type": "BUSINESS"
+          }
+        ],
+        "phone_numbers": [
+          {
+            "phone_number": "+1 642 626 1234",
+            "phone_type": "BUSINESS"
+          },
+          {
+            "phone_number": "+1 642 626 4567",
+            "phone_type": "MOBILE"
+          }
+        ]
+      },
+      "stakeholder_type": "INDIVIDUAL"
+    },
+    {
+      "addresses": [
+        {
+          "address_type": "LEGAL",
           "country": "US"
         }
       ],
