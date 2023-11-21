@@ -138,6 +138,7 @@
       "security_law_exemptions": [],
       "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
       "custom_id": "WARR-1",
+      "quantity": "10000",
       "exercise_price": {
         "amount": "25.00",
         "currency": "USD"
@@ -156,8 +157,8 @@
           "conversion_right": {
             "type": "WARRANT_CONVERSION_RIGHT",
             "conversion_mechanism": {
-              "type": "PPS_BASED_CONVERSION",
-              "description": "The Holder is entitled, during the Exercise Period, to purchase from the Company such number of Preferred Shares as are equal to $100,000 divided by the Exercise Price. 'Exercise Price' shall mean 80% of the price per share paid by the investors in the next Qualified Financing."
+              "type": "FIXED_AMOUNT_CONVERSION",
+              "converts_to_quantity": "10000"
             },
             "converts_to_stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20"
           }
