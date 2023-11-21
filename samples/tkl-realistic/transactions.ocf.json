@@ -87,6 +87,7 @@
       "id": "institutional-investor-convertible-note-issuance",
       "security_id": "C5958242-987F-4837-AAD9-451B666CA8B2",
       "date": "2022-06-01",
+      "board_approval_date": "2022-06-01",
       "security_law_exemptions": [],
       "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
       "custom_id": "CN-1",
@@ -132,9 +133,15 @@
       "id": "institutional-investor-warrant-issuance",
       "security_id": "48B15D86-882A-4235-88A8-838B8C55BEFB",
       "date": "2022-06-01",
+      "board_approval_date": "2022-06-01",
+      "warrant_expiration_date": "2027-06-01",
       "security_law_exemptions": [],
       "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
       "custom_id": "WARR-1",
+      "exercise_price": {
+        "amount": "25.00",
+        "currency": "USD"
+      },
       "purchase_price": {
         "amount": "250000.00",
         "currency": "USD"
@@ -151,7 +158,8 @@
             "conversion_mechanism": {
               "type": "PPS_BASED_CONVERSION",
               "description": "The Holder is entitled, during the Exercise Period, to purchase from the Company such number of Preferred Shares as are equal to $100,000 divided by the Exercise Price. 'Exercise Price' shall mean 80% of the price per share paid by the investors in the next Qualified Financing."
-            }
+            },
+            "converts_to_stock_class_id": "1018CC47-78F2-4A00-B267-CE695AAE7F20"
           }
         }
       ],
@@ -178,6 +186,7 @@
         "currency": "USD"
       },
       "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "board_approval_date": "2022-04-01",
       "expiration_date": "2027-04-01",
       "termination_exercise_windows": []
     },
@@ -197,6 +206,7 @@
         "currency": "USD"
       },
       "vesting_terms_id": "4yr-1yr-cliff-schedule",
+      "board_approval_date": "2022-06-01",
       "expiration_date": "2032-06-01",
       "termination_exercise_windows": [
         {
