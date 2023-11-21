@@ -72,23 +72,22 @@
                 "amount": "20000000",
                 "currency": "CAD"
               },
-              "conversion_discount": "0.85"
+              "conversion_discount": "0.85",
+              "capitalization_definition_rules": {
+                "include_outstanding_shares": true,
+                "include_outstanding_options": true,
+                "include_outstanding_unissued_options": true,
+                "include_this_security": false,
+                "include_other_converting_securities": false,
+                "include_option_pool_topup_for_promised_options": true,
+                "include_additional_option_pool_topup": false,
+                "include_new_money": false
+              }
             },
             "converts_to_future_round": true
           }
         }
       ],
-      "capitalization_definition": "SAFE shall be converted into a number of shares reflecting the valuation cap specified therein, evaluated on a Pre-Money basis.",
-      "capitalization_definition_rules": {
-        "include_outstanding_shares": true,
-        "include_outstanding_options": true,
-        "include_outstanding_unissued_options": true,
-        "include_this_security": false,
-        "include_other_converting_securities": false,
-        "include_option_pool_topup_for_promised_options": true,
-        "include_additional_option_pool_topup": false,
-        "include_new_money": false
-      },
       "pro_rata": "2500",
       "seniority": 2,
       "comments": [
@@ -132,7 +131,6 @@
                 "amount": "18750000.00",
                 "currency": "USD"
               },
-              "capitalization_definition": "Convertible Note shall be converted into a number of shares reflecting the valuation cap specified therein, evaluated on a Post-Money basis.",
               "capitalization_definition_rules": {
                 "include_outstanding_shares": true,
                 "include_outstanding_options": true,
