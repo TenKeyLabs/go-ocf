@@ -1,6 +1,10 @@
 package objects
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
+
 	"github.com/tenkeylabs/go-ocf/enums"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/acceptance"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/adjustment"
@@ -16,108 +20,419 @@ import (
 	"github.com/tenkeylabs/go-ocf/objects/transactions/split"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/transfer"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/vesting"
-	"github.com/tenkeylabs/go-ocf/types"
-	"github.com/tenkeylabs/go-ocf/types/conversionmechanisms"
-	"github.com/tenkeylabs/go-ocf/types/conversionrights"
-	"github.com/tenkeylabs/go-ocf/types/conversiontriggers"
 )
 
 type Transaction struct {
-	*acceptance.Acceptance
-	*cancellation.Cancellation
-	*conversion.Conversion
-	*exercise.Exercise
-	*issuance.Issuance
-	*reissuance.StockReissuance
-	*repurchase.StockRepurchase
-	*release.EquityCompensationRelease
-	*retraction.Retraction
-	*returntopool.StockPlanReturnToPool
-	*split.StockClassSplit
-	*adjustment.Adjustment
-	*transfer.Transfer
-	*vesting.Vesting
-	// Unstructured text comments related to and stored for the object
-	Comments []string `json:"comments,omitempty"`
-	// Date on which the transaction occurred
-	Date string `json:"date"`
-	// Identifier for the object
-	ID string `json:"id"`
-	// Object type field
 	ObjectType enums.ObjectType `json:"object_type"`
-	// Identifier for the security (stock, plan security, warrant, or convertible) by which it
-	// can be referenced by other transaction objects. Note that while this identifier is
-	// created with an issuance object, it should be different than the issuance object's `id`
-	// field which identifies the issuance transaction object itself. All future transactions on
-	// the security (e.g. acceptance, transfer, cancel, etc.) must reference this `security_id`
-	// to qualify which security the transaction applies to.
-	SecurityID *string `json:"security_id,omitempty"`
-	// Identifier for the security that holds the remainder balance (for partial cancellations)
-	BalanceSecurityID *string `json:"balance_security_id,omitempty"`
-	// Reason for the cancellation
-	ReasonText *string `json:"reason_text,omitempty"`
-	// Identifier for the security (or securities) that resulted from the conversion
-	ResultingSecurityIDS []string `json:"resulting_security_ids,omitempty"`
-	// What is the id of the convertible's conversion trigger that resulted in this conversion
-	TriggerID *string `json:"trigger_id,omitempty"`
-	// Date of board approval for the security
-	BoardApprovalDate *string `json:"board_approval_date,omitempty"`
-	// In event the convertible can convert due to trigger events (e.g. Maturity, Next Qualified
-	// Financing, Change of Control, at Election of Holder), what are the terms?
-	ConversionTriggers []conversiontriggers.ConversionTrigger `json:"conversion_triggers,omitempty"`
-	// A custom ID for this security (e.g. CN-1.)
-	CustomID *string `json:"custom_id,omitempty"`
-	// List of security law exemptions (and applicable jurisdictions) for this security
-	SecurityLawExemptions []types.SecurityExemption `json:"security_law_exemptions,omitempty"`
-	// If different convertible instruments have seniorty over one another, use this value to
-	// build a seniority stack, with 1 being highest seniority and equal seniority values
-	// assumed to be equal priority
-	Seniority *int64 `json:"seniority,omitempty"`
-	// Identifier for the stakeholder that holds legal title to this security
-	StakeholderID *string `json:"stakeholder_id,omitempty"`
-	// Unstructured text description of consideration provided in exchange for security exercise
-	ConsiderationText *string `json:"consideration_text,omitempty"`
-	// Quantity of shares exercised
-	Quantity *string `json:"quantity,omitempty"`
-	// If the plan security is compensation, what kind?
-	CompensationType *enums.CompensationType `json:"compensation_type,omitempty"`
-	// If this is an option, what is the exercise price of the option?
-	ExercisePrice *types.Monetary `json:"exercise_price,omitempty"`
-	// Expiration date of the plan security
-	ExpirationDate *string `json:"expiration_date,omitempty"`
-	// Exercise periods applicable to plan security after a termination for a given, enumerated
-	// reason
-	TerminationExerciseWindows []types.TerminationWindow `json:"termination_exercise_windows,omitempty"`
-	// Identifier of the VestingTerms to which this security is subject.  If not present,
-	// security is fully vested on issuance.
-	VestingTermsID *string `json:"vesting_terms_id,omitempty"`
-	// What conversion mechanism applies to calculate the number of resulting securities?
-	ConversionMechanism *conversionmechanisms.ConversionMechanism `json:"conversion_mechanism,omitempty"`
-	// When the conditions of the trigger are met, how does the convertible convert?
-	ConversionRight *conversionrights.ConversionRights `json:"conversion_right,omitempty"`
-	// Human-friendly nickname to describe the conversion right
-	Nickname *string `json:"nickname,omitempty"`
-	// Legal language describing what conditions must be satisfied for the conversion to take
-	// place (ideally, this should be excerpted from the instrument where possible)
-	TriggerCondition *string `json:"trigger_condition,omitempty"`
-	// Long-form description of the trigger
-	TriggerDescription *string `json:"trigger_description,omitempty"`
-	// When the trigger condition is met, is the conversion automatic, elective or automatic
-	// with an elective right not to convert
-	Type *enums.ConversionTriggerType `json:"type,omitempty"`
-	// Is this stock class potentially convertible into a future, as-yet undetermined stock
-	// class (e.g. Founder Preferred)
-	ConvertsToFutureRound *bool `json:"converts_to_future_round,omitempty"`
-	// Is this an MFN (Most Favored Nations) flavored Convertible Note?
-	ConversionMfn *bool `json:"conversion_mfn,omitempty"`
-	// Reference to the `id` of a VestingCondition in this security's VestingTerms. This
-	// condition should have a trigger type of `VESTING_EVENT`.
-	VestingConditionID *string `json:"vesting_condition_id,omitempty"`
-	// If the plan security is an option, what kind?
-	OptionGrantType *enums.OptionType `json:"option_grant_type,omitempty"`
-	// The identifier of the existing, known stock class this stock class can convert into
-	ConvertsToStockClassID *string `json:"converts_to_stock_class_id,omitempty"`
-	// If the equity compensation was issued from a plan (don't forget, plan-less options are a
-	// thing), what is the plan id.
-	StockPlanID *string `json:"stock_plan_id,omitempty"`
+
+	//Acceptance
+	ConvertibleAcceptance        *acceptance.ConvertibleAcceptance        `json:"convertible_acceptance,omitempty"`
+	EquityCompensationAcceptance *acceptance.EquityCompensationAcceptance `json:"equity_compensation_acceptance,omitempty"`
+	PlanSecurityAcceptance       *acceptance.PlanSecurityAcceptance       `json:"plan_security_acceptance,omitempty"`
+	StockAcceptance              *acceptance.StockAcceptance              `json:"stock_acceptance,omitempty"`
+	WarrantAcceptance            *acceptance.WarrantAcceptance            `json:"warrant_acceptance,omitempty"`
+
+	//Adjustment
+	IssuerAuthorizedSharesAdjustment     *adjustment.IssuerAuthorizedSharesAdjustment     `json:"issuer_authorized_shares_adjustment,omitempty"`
+	StockClassAuthorizedSharesAdjustment *adjustment.StockClassAuthorizedSharesAdjustment `json:"stock_class_authorized_shares_adjustment,omitempty"`
+	StockClassConversionRatioAdjustment  *adjustment.StockClassConversionRatioAdjustment  `json:"stock_class_conversion_ratio_adjustment,omitempty"`
+	StockPlanPoolAdjustment              *adjustment.StockPlanPoolAdjustment              `json:"stock_plan_pool_adjustment,omitempty"`
+
+	//Cancellation
+	ConvertibleCancellation        *cancellation.ConvertibleCancellation        `json:"convertible_cancellation,omitempty"`
+	EquityCompensationCancellation *cancellation.EquityCompensationCancellation `json:"equity_compensation_cancellation,omitempty"`
+	PlanSecurityCancellation       *cancellation.PlanSecurityCancellation       `json:"plan_security_cancellation,omitempty"`
+	StockCancellation              *cancellation.StockCancellation              `json:"stock_cancellation,omitempty"`
+	WarrantCancellation            *cancellation.WarrantCancellation            `json:"warrant_cancellation,omitempty"`
+
+	//Conversion
+	ConvertibleConversion *conversion.ConvertibleConversion `json:"convertible_conversion,omitempty"`
+	StockConversion       *conversion.StockConversion       `json:"stock_conversion,omitempty"`
+
+	//Exercise
+	EquityCompensationExercise *exercise.EquityCompensationExercise `json:"equity_compensation_exercise,omitempty"`
+	PlanSecurityExercise       *exercise.PlanSecurityExercise       `json:"plan_security_exercise,omitempty"`
+	WarrantExercise            *exercise.WarrantExercise            `json:"warrant_exercise,omitempty"`
+
+	//Issuance
+	ConvertibleIssuance        *issuance.ConvertibleIssuance        `json:"convertible_issuance,omitempty"`
+	EquityCompensationIssuance *issuance.EquityCompensationIssuance `json:"equity_compensation_issuance,omitempty"`
+	PlanSecurityIssuance       *issuance.PlanSecurityIssuance       `json:"plan_security_issuance,omitempty"`
+	StockIssuance              *issuance.StockIssuance              `json:"stock_issuance,omitempty"`
+	WarrantIssuance            *issuance.WarrantIssuance            `json:"warrant_issuance,omitempty"`
+
+	//Reissuance
+	StockReissuance *reissuance.StockReissuance `json:"stock_reissuance,omitempty"`
+
+	//Release
+	EquityCompensationRelease *release.EquityCompensationRelease `json:"equity_compensation_release,omitempty"`
+	PlanSecurityRelease       *release.PlanSecurityRelease       `json:"plan_security_release,omitempty"`
+
+	//Repurchase
+	StockRepurchase *repurchase.StockRepurchase `json:"stock_repurchase,omitempty"`
+
+	//Retraction
+	ConvertibleRetraction        *retraction.ConvertibleRetraction        `json:"convertible_retraction,omitempty"`
+	EquityCompensationRetraction *retraction.EquityCompensationRetraction `json:"equity_compensation_retraction,omitempty"`
+	PlanSecurityRetraction       *retraction.PlanSecurityRetraction       `json:"plan_security_retraction,omitempty"`
+	StockRetraction              *retraction.StockRetraction              `json:"stock_retraction,omitempty"`
+	WarrantRetraction            *retraction.WarrantRetraction            `json:"warrant_retraction,omitempty"`
+
+	//ReturnToPool
+	StockPlanReturnToPool *returntopool.StockPlanReturnToPool `json:"stock_plan_return_to_pool,omitempty"`
+
+	//Split
+	StockClassSplit *split.StockClassSplit `json:"stock_class_split,omitempty"`
+
+	//Transfer
+	ConvertibleTransfer        *transfer.ConvertibleTransfer        `json:"convertible_transfer,omitempty"`
+	EquityCompensationTransfer *transfer.EquityCompensationTransfer `json:"equity_compensation_transfer,omitempty"`
+	PlanSecurityTransfer       *transfer.PlanSecurityTransfer       `json:"plan_security_transfer,omitempty"`
+	StockTransfer              *transfer.StockTransfer              `json:"stock_transfer,omitempty"`
+	WarrantTransfer            *transfer.WarrantTransfer            `json:"warrant_transfer,omitempty"`
+
+	//Vesting
+	VestingAcceleration *vesting.VestingAcceleration `json:"vesting_acceleration,omitempty"`
+	VestingEvent        *vesting.VestingEvent        `json:"vesting_event,omitempty"`
+	VestingStart        *vesting.VestingStart        `json:"vesting_start,omitempty"`
+}
+
+func (t *Transaction) UnmarshalJSON(data []byte) error {
+	aliasTransaction := &struct {
+		ObjectType enums.ObjectType `json:"object_type"`
+	}{}
+	if err := json.Unmarshal(data, &aliasTransaction); err != nil {
+		return err
+	}
+
+	t.ObjectType = aliasTransaction.ObjectType
+
+	var err error
+	switch aliasTransaction.ObjectType {
+
+	//Acceptance
+	case enums.ObjectTxConvertibleAcceptance:
+		var convertibleAcceptance acceptance.ConvertibleAcceptance
+		err = json.Unmarshal(data, &convertibleAcceptance)
+		t.ConvertibleAcceptance = &convertibleAcceptance
+	case enums.ObjectTxEquityCompensationAcceptance:
+		var equityCompensationAcceptance acceptance.EquityCompensationAcceptance
+		err = json.Unmarshal(data, &equityCompensationAcceptance)
+		t.EquityCompensationAcceptance = &equityCompensationAcceptance
+	case enums.ObjectTxPlanSecurityAcceptance:
+		var planSecurityAcceptance acceptance.PlanSecurityAcceptance
+		err = json.Unmarshal(data, &planSecurityAcceptance)
+		t.PlanSecurityAcceptance = &planSecurityAcceptance
+	case enums.ObjectTxStockAcceptance:
+		var stockAcceptance acceptance.StockAcceptance
+		err = json.Unmarshal(data, &stockAcceptance)
+		t.StockAcceptance = &stockAcceptance
+	case enums.ObjectTxWarrantAcceptance:
+		var warrantAcceptance acceptance.WarrantAcceptance
+		err = json.Unmarshal(data, &warrantAcceptance)
+		t.WarrantAcceptance = &warrantAcceptance
+
+	//Adjustment
+	case enums.ObjectTxIssuerAuthorizedSharesAdjustment:
+		var issuerAuthorizedSharesAdjustment adjustment.IssuerAuthorizedSharesAdjustment
+		err = json.Unmarshal(data, &issuerAuthorizedSharesAdjustment)
+		t.IssuerAuthorizedSharesAdjustment = &issuerAuthorizedSharesAdjustment
+	case enums.ObjectTxStockClassAuthorizedSharesAdjustment:
+		var issuerAuthorizedSharesAdjustment adjustment.IssuerAuthorizedSharesAdjustment
+		err = json.Unmarshal(data, &issuerAuthorizedSharesAdjustment)
+		t.IssuerAuthorizedSharesAdjustment = &issuerAuthorizedSharesAdjustment
+	case enums.ObjectTxStockClassConversionRatioAdjustment:
+		var stockClassConversionRatioAdjustment adjustment.StockClassConversionRatioAdjustment
+		err = json.Unmarshal(data, &stockClassConversionRatioAdjustment)
+		t.StockClassConversionRatioAdjustment = &stockClassConversionRatioAdjustment
+	case enums.ObjectTxStockPlanPoolAdjustment:
+		var stockPlanPoolAdjustment adjustment.StockPlanPoolAdjustment
+		err = json.Unmarshal(data, &stockPlanPoolAdjustment)
+		t.StockPlanPoolAdjustment = &stockPlanPoolAdjustment
+
+	//Cancellation
+	case enums.ObjectTxConvertibleCancellation:
+		var convertibleCancellation cancellation.ConvertibleCancellation
+		err = json.Unmarshal(data, &convertibleCancellation)
+		t.ConvertibleCancellation = &convertibleCancellation
+	case enums.ObjectTxEquityCompensationCancellation:
+		var equityCompensationCancellation cancellation.EquityCompensationCancellation
+		err = json.Unmarshal(data, &equityCompensationCancellation)
+		t.EquityCompensationCancellation = &equityCompensationCancellation
+	case enums.ObjectTxPlanSecurityCancellation:
+		var planSecurityCancellation cancellation.PlanSecurityCancellation
+		err = json.Unmarshal(data, &planSecurityCancellation)
+		t.PlanSecurityCancellation = &planSecurityCancellation
+	case enums.ObjectTxStockCancellation:
+		var stockCancellation cancellation.StockCancellation
+		err = json.Unmarshal(data, &stockCancellation)
+		t.StockCancellation = &stockCancellation
+	case enums.ObjectTxWarrantCancellation:
+		var warrantCancellation cancellation.WarrantCancellation
+		err = json.Unmarshal(data, &warrantCancellation)
+		t.WarrantCancellation = &warrantCancellation
+
+	//Conversion
+	case enums.ObjectTxConvertibleConversion:
+		var convertibleConversion conversion.ConvertibleConversion
+		err = json.Unmarshal(data, &convertibleConversion)
+		t.ConvertibleConversion = &convertibleConversion
+	case enums.ObjectTxStockConversion:
+		var stockConversion conversion.StockConversion
+		err = json.Unmarshal(data, &stockConversion)
+		t.StockConversion = &stockConversion
+
+	//Exercise
+	case enums.ObjectTxEquityCompensationExercise:
+		var equityCompensationExercise exercise.EquityCompensationExercise
+		err = json.Unmarshal(data, &equityCompensationExercise)
+		t.EquityCompensationExercise = &equityCompensationExercise
+	case enums.ObjectTxPlanSecurityExercise:
+		var planSecurityExercise exercise.PlanSecurityExercise
+		err = json.Unmarshal(data, &planSecurityExercise)
+		t.PlanSecurityExercise = &planSecurityExercise
+	case enums.ObjectTxWarrantExercise:
+		var warrantExercise exercise.WarrantExercise
+		err = json.Unmarshal(data, &warrantExercise)
+		t.WarrantExercise = &warrantExercise
+
+	//Issuance
+	case enums.ObjectTxStockIssuance:
+		var stockIssuance issuance.StockIssuance
+		err = json.Unmarshal(data, &stockIssuance)
+		t.StockIssuance = &stockIssuance
+	case enums.ObjectTxConvertibleIssuance:
+		var convertibleIssuance issuance.ConvertibleIssuance
+		err = json.Unmarshal(data, &convertibleIssuance)
+		t.ConvertibleIssuance = &convertibleIssuance
+	case enums.ObjectTxPlanSecurityIssuance:
+		var planSecurityIssuance issuance.PlanSecurityIssuance
+		err = json.Unmarshal(data, &planSecurityIssuance)
+		t.PlanSecurityIssuance = &planSecurityIssuance
+	case enums.ObjectTxEquityCompensationIssuance:
+		var equityCompensationIssuance issuance.EquityCompensationIssuance
+		err = json.Unmarshal(data, &equityCompensationIssuance)
+		t.EquityCompensationIssuance = &equityCompensationIssuance
+	case enums.ObjectTxWarrantIssuance:
+		var warrantIssuance issuance.WarrantIssuance
+		err = json.Unmarshal(data, &warrantIssuance)
+		t.WarrantIssuance = &warrantIssuance
+
+	//Reissuance
+	case enums.ObjectTxStockReissuance:
+		var stockReissuance reissuance.StockReissuance
+		err = json.Unmarshal(data, &stockReissuance)
+		t.StockReissuance = &stockReissuance
+
+	//Release
+	case enums.ObjectTxEquityCompensationRelease:
+		var equityCompensationRelease release.EquityCompensationRelease
+		err = json.Unmarshal(data, &equityCompensationRelease)
+		t.EquityCompensationRelease = &equityCompensationRelease
+	case enums.ObjectTxPlanSecurityRelease:
+		var planSecurityRelease release.PlanSecurityRelease
+		err = json.Unmarshal(data, &planSecurityRelease)
+		t.PlanSecurityRelease = &planSecurityRelease
+
+	//Repurchase
+	case enums.ObjectTxStockRepurchase:
+		var stockRepurchase repurchase.StockRepurchase
+		err = json.Unmarshal(data, &stockRepurchase)
+		t.StockRepurchase = &stockRepurchase
+
+	//Retraction
+	case enums.ObjectTxConvertibleRetraction:
+		var convertibleRetraction retraction.ConvertibleRetraction
+		err = json.Unmarshal(data, &convertibleRetraction)
+		t.ConvertibleRetraction = &convertibleRetraction
+	case enums.ObjectTxEquityCompensationRetraction:
+		var equityCompensationRetraction retraction.EquityCompensationRetraction
+		err = json.Unmarshal(data, &equityCompensationRetraction)
+		t.EquityCompensationRetraction = &equityCompensationRetraction
+	case enums.ObjectTxPlanSecurityRetraction:
+		var planSecurityRetraction retraction.PlanSecurityRetraction
+		err = json.Unmarshal(data, &planSecurityRetraction)
+		t.PlanSecurityRetraction = &planSecurityRetraction
+	case enums.ObjectTxStockRetraction:
+		var stockRetraction retraction.StockRetraction
+		err = json.Unmarshal(data, &stockRetraction)
+		t.StockRetraction = &stockRetraction
+	case enums.ObjectTxWarrantRetraction:
+		var warrantRetraction retraction.WarrantRetraction
+		err = json.Unmarshal(data, &warrantRetraction)
+		t.WarrantRetraction = &warrantRetraction
+
+	//ReturnToPool
+	case enums.ObjectTxStockPlanReturnToPool:
+		var stockPlanReturnToPool returntopool.StockPlanReturnToPool
+		err = json.Unmarshal(data, &stockPlanReturnToPool)
+		t.StockPlanReturnToPool = &stockPlanReturnToPool
+
+	//Split
+	case enums.ObjectTxStockClassSplit:
+		var stockClassSplit split.StockClassSplit
+		err = json.Unmarshal(data, &stockClassSplit)
+		t.StockClassSplit = &stockClassSplit
+
+	//Transfer
+	case enums.ObjectTxConvertibleTransfer:
+		var convertibleTransfer transfer.ConvertibleTransfer
+		err = json.Unmarshal(data, &convertibleTransfer)
+		t.ConvertibleTransfer = &convertibleTransfer
+	case enums.ObjectTxEquityCompensationTransfer:
+		var equityCompensationTransfer transfer.EquityCompensationTransfer
+		err = json.Unmarshal(data, &equityCompensationTransfer)
+		t.EquityCompensationTransfer = &equityCompensationTransfer
+	case enums.ObjectTxPlanSecurityTransfer:
+		var planSecurityTransfer transfer.PlanSecurityTransfer
+		err = json.Unmarshal(data, &planSecurityTransfer)
+		t.PlanSecurityTransfer = &planSecurityTransfer
+	case enums.ObjectTxStockTransfer:
+		var stockTransfer transfer.StockTransfer
+		err = json.Unmarshal(data, &stockTransfer)
+		t.StockTransfer = &stockTransfer
+	case enums.ObjectTxWarrantTransfer:
+		var warrantTransfer transfer.WarrantTransfer
+		err = json.Unmarshal(data, &warrantTransfer)
+		t.WarrantTransfer = &warrantTransfer
+
+	//Vesting
+	case enums.ObjectTxVestingAcceleration:
+		var vestingAcceleration vesting.VestingAcceleration
+		err = json.Unmarshal(data, &vestingAcceleration)
+		t.VestingAcceleration = &vestingAcceleration
+	case enums.ObjectTxVestingEvent:
+		var vestingEvent vesting.VestingEvent
+		err = json.Unmarshal(data, &vestingEvent)
+		t.VestingEvent = &vestingEvent
+	case enums.ObjectTxVestingStart:
+		var vestingStart vesting.VestingStart
+		err = json.Unmarshal(data, &vestingStart)
+		t.VestingStart = &vestingStart
+	}
+
+	return err
+}
+
+func (t *Transaction) MarshalJSON() ([]byte, error) {
+	//TODO: Investigate using reflection to remove the need to manually marshal each type
+
+	switch t.ObjectType {
+
+	//Acceptance
+	case enums.ObjectTxConvertibleAcceptance:
+		return json.Marshal(t.ConvertibleAcceptance)
+	case enums.ObjectTxEquityCompensationAcceptance:
+		return json.Marshal(t.EquityCompensationAcceptance)
+	case enums.ObjectTxPlanSecurityAcceptance:
+		return json.Marshal(t.PlanSecurityAcceptance)
+	case enums.ObjectTxStockAcceptance:
+		return json.Marshal(t.StockAcceptance)
+	case enums.ObjectTxWarrantAcceptance:
+		return json.Marshal(t.WarrantAcceptance)
+
+	//Adjustment
+	case enums.ObjectTxIssuerAuthorizedSharesAdjustment:
+		return json.Marshal(t.IssuerAuthorizedSharesAdjustment)
+	case enums.ObjectTxStockClassAuthorizedSharesAdjustment:
+		return json.Marshal(t.IssuerAuthorizedSharesAdjustment)
+	case enums.ObjectTxStockClassConversionRatioAdjustment:
+		return json.Marshal(t.StockClassConversionRatioAdjustment)
+	case enums.ObjectTxStockPlanPoolAdjustment:
+		return json.Marshal(t.StockPlanPoolAdjustment)
+
+	//Cancellation
+	case enums.ObjectTxConvertibleCancellation:
+		return json.Marshal(t.ConvertibleCancellation)
+	case enums.ObjectTxEquityCompensationCancellation:
+		return json.Marshal(t.EquityCompensationCancellation)
+	case enums.ObjectTxPlanSecurityCancellation:
+		return json.Marshal(t.PlanSecurityCancellation)
+	case enums.ObjectTxStockCancellation:
+		return json.Marshal(t.StockCancellation)
+	case enums.ObjectTxWarrantCancellation:
+		return json.Marshal(t.WarrantCancellation)
+
+	//Conversion
+	case enums.ObjectTxConvertibleConversion:
+		return json.Marshal(t.ConvertibleConversion)
+	case enums.ObjectTxStockConversion:
+		return json.Marshal(t.StockConversion)
+
+	//Exercise
+	case enums.ObjectTxEquityCompensationExercise:
+		return json.Marshal(t.EquityCompensationExercise)
+	case enums.ObjectTxPlanSecurityExercise:
+		return json.Marshal(t.PlanSecurityExercise)
+	case enums.ObjectTxWarrantExercise:
+		return json.Marshal(t.WarrantExercise)
+
+	//Issuance
+	case enums.ObjectTxStockIssuance:
+		return json.Marshal(t.StockIssuance)
+	case enums.ObjectTxConvertibleIssuance:
+		return json.Marshal(t.ConvertibleIssuance)
+	case enums.ObjectTxPlanSecurityIssuance:
+		return json.Marshal(t.PlanSecurityIssuance)
+	case enums.ObjectTxEquityCompensationIssuance:
+		return json.Marshal(t.EquityCompensationIssuance)
+	case enums.ObjectTxWarrantIssuance:
+		return json.Marshal(t.WarrantIssuance)
+
+	//Reissuance
+	case enums.ObjectTxStockReissuance:
+		return json.Marshal(t.StockReissuance)
+
+	//Release
+	case enums.ObjectTxEquityCompensationRelease:
+		return json.Marshal(t.EquityCompensationRelease)
+	case enums.ObjectTxPlanSecurityRelease:
+		return json.Marshal(t.PlanSecurityRelease)
+
+	//Repurchase
+	case enums.ObjectTxStockRepurchase:
+		return json.Marshal(t.StockRepurchase)
+
+	//Retraction
+	case enums.ObjectTxConvertibleRetraction:
+		return json.Marshal(t.ConvertibleRetraction)
+	case enums.ObjectTxEquityCompensationRetraction:
+		return json.Marshal(t.EquityCompensationRetraction)
+	case enums.ObjectTxPlanSecurityRetraction:
+		return json.Marshal(t.PlanSecurityRetraction)
+	case enums.ObjectTxStockRetraction:
+		return json.Marshal(t.StockRetraction)
+	case enums.ObjectTxWarrantRetraction:
+		return json.Marshal(t.WarrantRetraction)
+
+	//ReturnToPool
+	case enums.ObjectTxStockPlanReturnToPool:
+		return json.Marshal(t.StockPlanReturnToPool)
+
+	//Split
+	case enums.ObjectTxStockClassSplit:
+		return json.Marshal(t.StockClassSplit)
+
+	//Transfer
+	case enums.ObjectTxConvertibleTransfer:
+		return json.Marshal(t.ConvertibleTransfer)
+	case enums.ObjectTxEquityCompensationTransfer:
+		return json.Marshal(t.EquityCompensationTransfer)
+	case enums.ObjectTxPlanSecurityTransfer:
+		return json.Marshal(t.PlanSecurityTransfer)
+	case enums.ObjectTxStockTransfer:
+		return json.Marshal(t.StockTransfer)
+	case enums.ObjectTxWarrantTransfer:
+		return json.Marshal(t.WarrantTransfer)
+
+	//Vesting
+	case enums.ObjectTxVestingAcceleration:
+		return json.Marshal(t.VestingAcceleration)
+	case enums.ObjectTxVestingEvent:
+		return json.Marshal(t.VestingEvent)
+	case enums.ObjectTxVestingStart:
+		return json.Marshal(t.VestingStart)
+	}
+
+	return nil, errors.New(fmt.Sprintf("unhandled transaction type %v", t.ObjectType))
 }
