@@ -14,6 +14,9 @@ type SAFEConversionMechanism struct {
 	// How is company capitalization defined for purposes of conversion? If possible, include
 	// the legal language from the instrument.
 	CapitalizationDefinition *string `json:"capitalization_definition,omitempty"`
+	// The rules for which types of securities would be included in the capitalization
+	// definition.
+	CapitalizationDefinitionRules *types.CapitalizationDefinitionRules `json:"capitalization_definition_rules,omitempty"`
 	// What is the percentage discount available upon conversion, if applicable? (decimal
 	// representation - e.g. 0.125 for 12.5%)
 	ConversionDiscount *string `json:"conversion_discount,omitempty"`

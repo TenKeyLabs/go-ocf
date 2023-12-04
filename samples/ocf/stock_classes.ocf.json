@@ -4,8 +4,6 @@
     {
       "board_approval_date": "2001-02-28",
       "class_type": "COMMON",
-      "comments": [],
-      "conversion_rights": [],
       "default_id_prefix": "CS-",
       "id": "8d8371e8-d41d-4a49-9f42-b91758fd155d",
       "initial_shares_authorized": "1000000000.00",
@@ -27,7 +25,6 @@
     {
       "board_approval_date": "2021-01-28",
       "class_type": "PREFERRED",
-      "comments": [],
       "conversion_rights": [
         {
           "conversion_mechanism": {

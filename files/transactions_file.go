@@ -11,5 +11,5 @@ type TransactionsFile struct {
 	files.File
 
 	// List of OCF transaction objects
-	Items []map[string]*json.RawMessage `json:"items"` //TODO: Union types
+	Items []map[string]*json.RawMessage `json:"items"`
 }

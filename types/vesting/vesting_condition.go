@@ -2,10 +2,10 @@ package vesting
 
 // Describes condition / triggers to be satisfied for vesting to occur
 type VestingCondition struct {
+	// Reference identifier for this condition
+	ID string `json:"id"`
 	// Detailed description of the condition
 	Description *string `json:"description,omitempty"`
-	// Reference identifier for this condition
-
 	// List of ALL VestingCondition IDs that can trigger after this one. If there are none, use
 	// an empty array.
 	// Conditions should be in priority order in the array, ordered from the highest priority to

@@ -26,7 +26,6 @@ type ocfFileContent[T any] struct {
 	Items    []T            `json:"items"`
 }
 
-// TODO: Take in file
 func ParseOcfResources(folderPath string) (OcfResources, error) {
 	// Read the manifest file
 	ocfManifestFileJson, err := os.ReadFile(fmt.Sprintf("%v/manifest.ocf.json", folderPath))

@@ -8,7 +8,6 @@ import (
 	"github.com/tenkeylabs/go-ocf/utils"
 )
 
-// TODO: Provide CLI to specify folder path for testing?
 func main() {
 	folderPath := "samples/tkl-realistic"
 	ocfResources, err := utils.ParseOcfResources(folderPath)

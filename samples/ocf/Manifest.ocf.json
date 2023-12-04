@@ -30,50 +30,49 @@
       "country_subdivision": "DE",
       "country": "US",
       "postal_code": "12345"
-    },
-    "comments": []
+    }
   },
   "as_of": "2022-03-22",
   "generated_at": "2022-03-22T01:23:45-06:00",
   "stock_plans_files": [
     {
-      "filepath": "./StockPlans.ocf.json",
+      "filepath": "./stock_plans.ocf.json",
       "md5": "c3e68dd645c6ab810f036923706355c8"
     }
   ],
   "stock_legend_templates_files": [
     {
-      "filepath": "./StockLegends.ocf.json",
+      "filepath": "./stock_legends.ocf.json",
       "md5": "931d44dbd132cc09aef64ae4bab61987"
     }
   ],
   "stock_classes_files": [
     {
-      "filepath": "./StockClasses.ocf.json",
+      "filepath": "./stock_classes.ocf.json",
       "md5": "45bbd5a565154f8c4a762c3d4fd711f1"
     }
   ],
   "transactions_files": [
     {
-      "filepath": "./Transactions.ocf.json",
+      "filepath": "./transactions.ocf.json",
       "md5": "ab35839164924530cac5eecbb19f2c4d"
     }
   ],
   "stakeholders_files": [
     {
-      "filepath": "./Stakeholders.ocf.json",
+      "filepath": "./stakeholders.ocf.json",
       "md5": "12c14ee9ac8e71a120cee15d075ecea6"
     }
   ],
   "vesting_terms_files": [
     {
-      "filepath": "./VestingTerms.ocf.json",
+      "filepath": "./vesting_terms.ocf.json",
       "md5": "c386f2a435dcb00ff89e08f30ed8e843"
     }
   ],
   "valuations_files": [
     {
-      "filepath": "./Valuations.ocf.json",
+      "filepath": "./valuations.ocf.json",
       "md5": "2a284a50fed8a0d07f10ed36edb14fc5"
     }
   ],

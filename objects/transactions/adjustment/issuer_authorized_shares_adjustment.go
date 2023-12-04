@@ -6,7 +6,7 @@ import (
 )
 
 type IssuerAuthorizedSharesAdjustment struct {
-	transactions.IssuerTransaction
+	transactions.StockClassTransaction
 	transactions.Transaction
 	objects.Object
 

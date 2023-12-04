@@ -315,8 +315,6 @@ func (t *Transaction) UnmarshalJSON(data []byte) error {
 }
 
 func (t *Transaction) MarshalJSON() ([]byte, error) {
-	//TODO: Investigate using reflection to remove the need to manually marshal each type
-
 	switch t.ObjectType {
 
 	//Acceptance

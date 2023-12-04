@@ -8,8 +8,9 @@ import (
 
 // Object describing a warrant acceptance transaction
 type WarrantAcceptance struct {
-	acceptance.Acceptance
 	transactions.Transaction
 	transactions.SecurityTransaction
 	objects.Object
+
+	Acceptance acceptance.Acceptance `json:"acceptance,omitempty"`
 }
