@@ -143,7 +143,7 @@
           "nickname": "Converts on Maturity",
           "trigger_condition": "Convertible Note shall convert upon completion of next equity financing (as defined in the instrument)",
           "trigger_id": "99BFB280-D095-4698-9F7F-12388F2CEE65",
-          "type": "AUTOMATIC_ON_DATE"
+          "type": "AUTOMATIC_ON_CONDITION"
         }
       ],
       "convertible_type": "NOTE",
@@ -198,7 +198,6 @@
       "quantity": "10000",
       "security_id": "48B15D86-882A-4235-88A8-838B8C55BEFB",
       "security_law_exemptions": [],
-      "seniority": 1,
       "stakeholder_id": "8CA9E0E2-841A-4A4C-8DF2-E773F350F09A",
       "warrant_expiration_date": "2027-06-01"
     },

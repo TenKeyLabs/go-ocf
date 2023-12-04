@@ -4,110 +4,72 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"testing"
 
-	"github.com/google/go-cmp/cmp"
+	. "github.com/benjamintf1/unmarshalledmatchers"
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 )
 
-func TestOcfParser(t *testing.T) {
-	folderPath := "../samples/tkl-realistic"
+var _ = Describe("Safes", func() {
+	It("should parse json into go-ocf models", func() {
+		folderPath := "../samples/tkl-realistic"
+		ocfResources, err := ParseOcfResources(folderPath)
 
-	originalStockPlansJson, err := getFileItemsJson(folderPath, "stock_plans.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		Expect(err).To(BeNil())
+		Expect(ocfResources).ToNot(BeNil())
+	})
 
-	originalStockLegendTemplatesJson, err := getFileItemsJson(folderPath, "stock_legends.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+	It("should marshal go-ocf models into json that matches the original json", func() {
+		folderPath := "../samples/tkl-realistic"
+		ocfResources, err := ParseOcfResources(folderPath)
+		Expect(err).To(BeNil())
 
-	originalStockClassesJson, err := getFileItemsJson(folderPath, "stock_classes.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalStockPlansJson, err := getFileItemsJson(folderPath, "stock_plans.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFStockPlansJson, err := json.Marshal(ocfResources.StockPlans)
+		Expect(err).To(BeNil())
 
-	originalTransactionsJson, err := getFileItemsJson(folderPath, "transactions.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalStockLegendTemplatesJson, err := getFileItemsJson(folderPath, "stock_legends.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFStockLegendTemplatesJson, err := json.Marshal(ocfResources.StockLegendTemplates)
+		Expect(err).To(BeNil())
 
-	originalStakeholdersJson, err := getFileItemsJson(folderPath, "stakeholders.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalStockClassesJson, err := getFileItemsJson(folderPath, "stock_classes.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFStockClassesJson, err := json.Marshal(ocfResources.StockClasses)
+		Expect(err).To(BeNil())
 
-	originalVestingTermsJson, err := getFileItemsJson(folderPath, "vesting_terms.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalTransactionsJson, err := getFileItemsJson(folderPath, "transactions.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFTransactionsJson, err := json.MarshalIndent(ocfResources.Transactions, "", "    ")
+		Expect(err).To(BeNil())
 
-	originalValuationsJson, err := getFileItemsJson(folderPath, "valuations.ocf.json")
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalStakeholdersJson, err := getFileItemsJson(folderPath, "stakeholders.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFStakeholdersJson, err := json.Marshal(ocfResources.Stakeholders)
+		Expect(err).To(BeNil())
 
-	ocfResources, err := ParseOcfResources(folderPath)
-	if err != nil {
-		t.Errorf("error: %v: ", err)
-	}
+		originalVestingTermsJson, err := getFileItemsJson(folderPath, "vesting_terms.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFVestingTermsJson, err := json.MarshalIndent(ocfResources.VestingTerms, "", "    ")
+		Expect(err).To(BeNil())
 
-	ocfStockPlansJson, _ := json.Marshal(ocfResources.StockPlans)
-	ocfStockLegendTemplatesJson, _ := json.Marshal(ocfResources.StockLegendTemplates)
-	ocfStockClassesJson, _ := json.Marshal(ocfResources.StockClasses)
-	ocfTransactionsJson, _ := json.Marshal(ocfResources.Transactions)
-	ocfStakeholdersJson, _ := json.Marshal(ocfResources.Stakeholders)
-	ocfVestingTermsJson, _ := json.Marshal(ocfResources.VestingTerms)
-	ocfValuationsJson, _ := json.Marshal(ocfResources.Valuations)
+		originalValuationsJson, err := getFileItemsJson(folderPath, "valuations.ocf.json")
+		Expect(err).To(BeNil())
+		goOCFValuationsJson, err := json.Marshal(ocfResources.Valuations)
+		Expect(err).To(BeNil())
 
-  jsondiff.CompareJSON(originalStockPlansJson, ocfStockPlansJson)
-	stockPlansDiff := cmp.Diff(string(originalStockPlansJson), string(ocfStockPlansJson))
-	fmt.Printf("Original Stock Plans: %v\n\n", string(originalStockPlansJson))
-	fmt.Printf("OCF Stock Plans: %v\n\n", string(ocfStockPlansJson))
-	stockLegendTemplatesDiff := cmp.Diff(string(originalStockLegendTemplatesJson), string(ocfStockLegendTemplatesJson))
-	stockClassesDiff := cmp.Diff(string(originalStockClassesJson), string(ocfStockClassesJson))
-	transactionsDiff := cmp.Diff(string(originalTransactionsJson), string(ocfTransactionsJson))
-	stakeholdersDiff := cmp.Diff(string(originalStakeholdersJson), string(ocfStakeholdersJson))
-	vestingTermsDiff := cmp.Diff(string(originalVestingTermsJson), string(ocfVestingTermsJson))
-	valuationsDiff := cmp.Diff(string(originalValuationsJson), string(ocfValuationsJson))
+		Expect(goOCFStockPlansJson).To(MatchUnorderedJSON(originalStockPlansJson))
+		Expect(goOCFStockLegendTemplatesJson).To(MatchUnorderedJSON(originalStockLegendTemplatesJson))
+		Expect(goOCFStockClassesJson).To(MatchUnorderedJSON(originalStockClassesJson))
+		Expect(goOCFTransactionsJson).To(MatchUnorderedJSON(originalTransactionsJson))
+		Expect(goOCFStakeholdersJson).To(MatchUnorderedJSON(originalStakeholdersJson))
+		Expect(goOCFVestingTermsJson).To(MatchUnorderedJSON(originalVestingTermsJson))
+		Expect(goOCFValuationsJson).To(MatchUnorderedJSON(originalValuationsJson))
 
-	// t.Logf("stockPlansDiff: %s", stockPlansDiff)
-	// t.Logf("stockLegendTemplatesDiff: %s", stockLegendTemplatesDiff)
-	// t.Logf("stockClassesDiff: %s", stockClassesDiff)
-	// t.Logf("transactionsDiff: %s", transactionsDiff)
-	// t.Logf("stakeholdersDiff: %s", stakeholdersDiff)
-	// t.Logf("vestingTermsDiff: %s", vestingTermsDiff)
-	// t.Logf("valuationDiff: %s", valuationsDiff)
-
-	if stockPlansDiff != "" {
-		t.Errorf("stockPlansDiff: %s", stockPlansDiff)
-		return
-	}
-	if stockLegendTemplatesDiff != "" {
-		t.Errorf("stockLegendTemplatesDiff: %s", stockLegendTemplatesDiff)
-		return
-	}
-	if stockClassesDiff != "" {
-		t.Errorf("stockClassesDiff: %s", stockClassesDiff)
-		return
-	}
-	if transactionsDiff != "" {
-		t.Errorf("transactionsDiff: %s", transactionsDiff)
-		return
-	}
-	if stakeholdersDiff != "" {
-		t.Errorf("stakeholdersDiff: %s", stakeholdersDiff)
-		return
-	}
-	if vestingTermsDiff != "" {
-		t.Errorf("vestingTermsDiff: %s", vestingTermsDiff)
-		return
-	}
-	if valuationsDiff != "" {
-		t.Errorf("valuationDiff: %s", valuationsDiff)
-		return
-	}
-}
+		Expect(err).To(BeNil())
+	})
+})
 
 func getFileItemsJson(folderPath string, filePath string) ([]byte, error) {
 	fileJson, err := os.ReadFile(fmt.Sprintf("%v/%v", folderPath, filePath))
@@ -120,9 +82,6 @@ func getFileItemsJson(folderPath string, filePath string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("unable unmarshal into generic file: %w", err)
 	}
-
-	pretty, _ := json.MarshalIndent(fileContent.Items, "", "    ")
-	fmt.Printf("Pretty File: %v\n\n", string(pretty))
 
 	items, err := json.Marshal(fileContent.Items)
 	if err != nil {
