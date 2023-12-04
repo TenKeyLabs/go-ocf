@@ -5,14 +5,16 @@ import (
 	"fmt"
 	"os"
 
-	. "github.com/benjamintf1/unmarshalledmatchers"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	"github.com/onsi/gomega/format"
 )
 
 var _ = Describe("Safes", func() {
+	folderPath := "../samples/ocf"
+	format.MaxLength = 100000
+
 	It("should parse json into go-ocf models", func() {
-		folderPath := "../samples/tkl-realistic"
 		ocfResources, err := ParseOcfResources(folderPath)
 
 		Expect(err).To(BeNil())
@@ -20,7 +22,6 @@ var _ = Describe("Safes", func() {
 	})
 
 	It("should marshal go-ocf models into json that matches the original json", func() {
-		folderPath := "../samples/tkl-realistic"
 		ocfResources, err := ParseOcfResources(folderPath)
 		Expect(err).To(BeNil())
 
@@ -59,13 +60,13 @@ var _ = Describe("Safes", func() {
 		goOCFValuationsJson, err := json.Marshal(ocfResources.Valuations)
 		Expect(err).To(BeNil())
 
-		Expect(goOCFStockPlansJson).To(MatchUnorderedJSON(originalStockPlansJson))
-		Expect(goOCFStockLegendTemplatesJson).To(MatchUnorderedJSON(originalStockLegendTemplatesJson))
-		Expect(goOCFStockClassesJson).To(MatchUnorderedJSON(originalStockClassesJson))
-		Expect(goOCFTransactionsJson).To(MatchUnorderedJSON(originalTransactionsJson))
-		Expect(goOCFStakeholdersJson).To(MatchUnorderedJSON(originalStakeholdersJson))
-		Expect(goOCFVestingTermsJson).To(MatchUnorderedJSON(originalVestingTermsJson))
-		Expect(goOCFValuationsJson).To(MatchUnorderedJSON(originalValuationsJson))
+		Expect(goOCFStockPlansJson).To(MatchJSON(originalStockPlansJson))
+		Expect(goOCFStockLegendTemplatesJson).To(MatchJSON(originalStockLegendTemplatesJson))
+		Expect(goOCFStockClassesJson).To(MatchJSON(originalStockClassesJson))
+		Expect(goOCFTransactionsJson).To(MatchJSON(originalTransactionsJson))
+		Expect(goOCFStakeholdersJson).To(MatchJSON(originalStakeholdersJson))
+		Expect(goOCFVestingTermsJson).To(MatchJSON(originalVestingTermsJson))
+		Expect(goOCFValuationsJson).To(MatchJSON(originalValuationsJson))
 
 		Expect(err).To(BeNil())
 	})

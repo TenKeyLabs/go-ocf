@@ -66,7 +66,7 @@
         {
           "trigger_id": "99BFB280-D095-4698-9F7F-12388F2CEE65",
           "nickname": "Converts on Maturity",
-          "type": "AUTOMATIC_ON_DATE",
+          "type": "AUTOMATIC_ON_CONDITION",
           "trigger_condition": "SAFE shall convert upon completion of next equity financing (as defined in the instrument)",
           "conversion_right": {
             "type": "CONVERTIBLE_CONVERSION_RIGHT",
@@ -115,8 +115,7 @@
             }
           }
         }
-      ],
-      "seniority": 1
+      ]
     },
     {
       "object_type": "TX_PLAN_SECURITY_ISSUANCE",

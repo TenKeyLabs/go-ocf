@@ -8,8 +8,9 @@ import (
 
 // Object describing a convertible acceptance transaction
 type ConvertibleAcceptance struct {
-	acceptance.Acceptance
 	transactions.Transaction
 	transactions.SecurityTransaction
 	objects.Object
+
+	Acceptance acceptance.Acceptance `json:"acceptance,omitempty"`
 }

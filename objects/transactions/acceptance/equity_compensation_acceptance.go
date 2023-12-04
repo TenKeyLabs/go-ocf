@@ -8,8 +8,9 @@ import (
 
 // Object describing equity compensation acceptance transaction
 type EquityCompensationAcceptance struct {
-	acceptance.Acceptance
 	transactions.Transaction
 	transactions.SecurityTransaction
 	objects.Object
+
+	Acceptance acceptance.Acceptance `json:"acceptance,omitempty"`
 }
