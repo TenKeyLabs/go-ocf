@@ -10,5 +10,5 @@ type ReturnToPool struct {
 	// Id of the Stock Plan whose pool the reserved shares should return to. This does not have
 	// to be the same pool the securities were issued from as sometimes plan rollovers or other
 	// actions taken by the company can result in stock returning to a different pool.
-	StockPlanID *string `json:"stock_plan_id"`
+	StockPlanID string `json:"stock_plan_id"`
 }

@@ -1,0 +1,28 @@
+name: GO-OCF
+
+on:
+  pull_request:
+    paths:
+      - "./**"
+      - .github/go-ocf.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - "./**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: "./go.mod"
+          cache-dependency-path: "./go.sum"
+      - run: go install github.com/onsi/ginkgo/v2/ginkgo
+        working-directory: ./
+      - run: ginkgo -r -p
+        working-directory: ./

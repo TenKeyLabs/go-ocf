@@ -111,24 +111,6 @@
         "last_name": "Raphael"
       },
       "object_type": "STAKEHOLDER",
-      "contact_info": {
-        "emails": [
-          {
-            "email_address": "angel+raphael@example.com",
-            "email_type": "BUSINESS"
-          }
-        ],
-        "phone_numbers": [
-          {
-            "phone_number": "+1 642 626 1234",
-            "phone_type": "BUSINESS"
-          },
-          {
-            "phone_number": "+1 642 626 4567",
-            "phone_type": "MOBILE"
-          }
-        ]
-      },
       "stakeholder_type": "INDIVIDUAL"
     },
     {
