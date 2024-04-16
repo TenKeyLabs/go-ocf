@@ -17,7 +17,7 @@
       }
     ],
     "email": {
-      "email_address": "ceo@testcompany.com",
+      "email_address": "ceo+testcompany@example.com",
       "email_type": "BUSINESS"
     },
     "phone": {

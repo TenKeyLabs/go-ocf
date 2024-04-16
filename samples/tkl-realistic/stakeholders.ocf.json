@@ -16,11 +16,11 @@
       "contact_info": {
         "emails": [
           {
-            "email_address": "ceo@testcompany.com",
+            "email_address": "ceo+testcompany@example.com",
             "email_type": "BUSINESS"
           },
           {
-            "email_address": "alfredj@testcompany.com",
+            "email_address": "alfredj@example.com",
             "email_type": "PERSONAL"
           }
         ],
@@ -69,7 +69,7 @@
       "primary_contact": {
         "emails": [
           {
-            "email_address": "ben@bensons.com",
+            "email_address": "ben+sons@example.com",
             "email_type": "BUSINESS"
           }
         ],
@@ -124,11 +124,11 @@
       "contact_info": {
         "emails": [
           {
-            "email_address": "carlos@testpersonal.com",
+            "email_address": "carlos+personal@example.com",
             "email_type": "PERSONAL"
           },
           {
-            "email_address": "carlos@testcompany.com",
+            "email_address": "carlos+business@example.com",
             "email_type": "BUSINESS"
           }
         ]
@@ -154,7 +154,7 @@
       "contact_info": {
         "emails": [
           {
-            "email_address": "diana@testpersonal.com",
+            "email_address": "diana+personal@example.com",
             "email_type": "PERSONAL"
           }
         ]
@@ -171,7 +171,7 @@
       "contact_info": {
         "emails": [
           {
-            "email_address": "emilia@testpersonal.com",
+            "email_address": "emilia+personal@example.com",
             "email_type": "PERSONAL"
           }
         ]
@@ -199,11 +199,11 @@
       "contact_info": {
         "emails": [
           {
-            "email_address": "francois@testcontractors.com",
+            "email_address": "francois@example.com",
             "email_type": "BUSINESS"
           },
           {
-            "email_address": "f@testpersonal.com",
+            "email_address": "f+personal@example.com",
             "email_type": "PERSONAL"
           }
         ],
