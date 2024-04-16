@@ -1,8 +1,7 @@
 package files
 
 import (
-	"encoding/json"
-
+	"github.com/tenkeylabs/go-ocf/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/files"
 )
 
@@ -11,5 +10,5 @@ type TransactionsFile struct {
 	files.File
 
 	// List of OCF transaction objects
-	Items []map[string]*json.RawMessage `json:"items"`
+	Items []map[string]objects.Transaction `json:"items"`
 }
