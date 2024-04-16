@@ -2,7 +2,6 @@ package objects
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/tenkeylabs/go-ocf/enums"
@@ -333,7 +332,7 @@ func (t *Transaction) MarshalJSON() ([]byte, error) {
 	case enums.ObjectTxIssuerAuthorizedSharesAdjustment:
 		return json.Marshal(t.IssuerAuthorizedSharesAdjustment)
 	case enums.ObjectTxStockClassAuthorizedSharesAdjustment:
-		return json.Marshal(t.IssuerAuthorizedSharesAdjustment)
+		return json.Marshal(t.StockClassAuthorizedSharesAdjustment)
 	case enums.ObjectTxStockClassConversionRatioAdjustment:
 		return json.Marshal(t.StockClassConversionRatioAdjustment)
 	case enums.ObjectTxStockPlanPoolAdjustment:
@@ -432,5 +431,5 @@ func (t *Transaction) MarshalJSON() ([]byte, error) {
 		return json.Marshal(t.VestingStart)
 	}
 
-	return nil, errors.New(fmt.Sprintf("unhandled transaction type %v", t.ObjectType))
+	return nil, fmt.Errorf(fmt.Sprintf("unhandled transaction type %v", t.ObjectType))
 }
