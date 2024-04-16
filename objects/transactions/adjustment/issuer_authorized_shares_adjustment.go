@@ -5,7 +5,9 @@ import (
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 )
 
+// Object describing an event to change the number of authoried shares at the issuer level.
 type IssuerAuthorizedSharesAdjustment struct {
+	transactions.IssuerTransaction
 	transactions.StockClassTransaction
 	transactions.Transaction
 	objects.Object

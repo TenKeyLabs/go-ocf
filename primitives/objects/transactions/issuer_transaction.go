@@ -4,5 +4,5 @@ package transactions
 // issuer
 type IssuerTransaction struct {
 	// Identifier of the Issuer object, a subject of this transaction
-	IssuerID     *string     `json:"issuer_id,omitempty"`
+	IssuerID string `json:"issuer_id,omitempty"`
 }
