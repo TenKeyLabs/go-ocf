@@ -137,9 +137,9 @@ func (t *Transaction) UnmarshalJSON(data []byte) error {
 		err = json.Unmarshal(data, &issuerAuthorizedSharesAdjustment)
 		t.IssuerAuthorizedSharesAdjustment = &issuerAuthorizedSharesAdjustment
 	case enums.ObjectTxStockClassAuthorizedSharesAdjustment:
-		var issuerAuthorizedSharesAdjustment adjustment.IssuerAuthorizedSharesAdjustment
-		err = json.Unmarshal(data, &issuerAuthorizedSharesAdjustment)
-		t.IssuerAuthorizedSharesAdjustment = &issuerAuthorizedSharesAdjustment
+		var stockClassAuthorizedSharesAdjustment adjustment.StockClassAuthorizedSharesAdjustment
+		err = json.Unmarshal(data, &stockClassAuthorizedSharesAdjustment)
+		t.StockClassAuthorizedSharesAdjustment = &stockClassAuthorizedSharesAdjustment
 	case enums.ObjectTxStockClassConversionRatioAdjustment:
 		var stockClassConversionRatioAdjustment adjustment.StockClassConversionRatioAdjustment
 		err = json.Unmarshal(data, &stockClassConversionRatioAdjustment)
