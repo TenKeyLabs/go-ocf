@@ -4,6 +4,4 @@ package cancellation
 // Equity Compensation Cancellation)
 //
 // # Object describing a cancellation of equity compensation
-type PlanSecurityCancellation struct {
-	EquityCompensationCancellation
-}
+type PlanSecurityCancellation = EquityCompensationCancellation

@@ -2,7 +2,6 @@ package issuance
 
 import (
 	"github.com/tenkeylabs/go-ocf/enums"
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/issuance"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -13,9 +12,7 @@ import (
 // and should be modelled using Stock Issuances).
 type EquityCompensationIssuance struct {
 	issuance.Issuance
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	BasePrice *types.Monetary `json:"base_price,omitempty"`
 	// If the plan security is compensation, what kind?

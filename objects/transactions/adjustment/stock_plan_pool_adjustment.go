@@ -1,15 +1,12 @@
 package adjustment
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 )
 
 // Object describing the change in the size of a Stock Plan pool.
 type StockPlanPoolAdjustment struct {
 	transactions.StockPlanTransaction
-	transactions.Transaction
-	objects.Object
 
 	// Date on which board approved the change to the plan.
 	BoardApprovalDate *string `json:"board_approval_date,omitempty"`

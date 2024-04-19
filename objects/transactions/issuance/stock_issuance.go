@@ -2,7 +2,6 @@ package issuance
 
 import (
 	"github.com/tenkeylabs/go-ocf/enums"
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/issuance"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -11,9 +10,7 @@ import (
 // Object describing a stock issuance transaction by the issuer and held by a stakeholder
 type StockIssuance struct {
 	issuance.Issuance
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	// The cost basis for this particular stock
 	CostBasis *types.Monetary `json:"cost_basis,omitempty"`

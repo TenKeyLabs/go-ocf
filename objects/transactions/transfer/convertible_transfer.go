@@ -1,7 +1,6 @@
 package transfer
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/transfer"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -11,9 +10,7 @@ import (
 // with a security
 type ConvertibleTransfer struct {
 	transfer.Transfer
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	// Reference to the `id` of a VestingCondition in this security's VestingTerms. This
 	// condition should have a trigger type of `VESTING_START_DATE`.

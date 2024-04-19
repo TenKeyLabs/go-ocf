@@ -2,7 +2,6 @@ package issuance
 
 import (
 	"github.com/tenkeylabs/go-ocf/enums"
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/issuance"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -12,9 +11,7 @@ import (
 // Object describing warrant issuance transaction by the issuer and held by a stakeholder
 type WarrantIssuance struct {
 	issuance.Issuance
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	// The exercise price of the warrant
 	ExercisePrice *types.Monetary `json:"exercise_price,omitempty"`

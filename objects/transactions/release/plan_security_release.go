@@ -4,6 +4,4 @@ package release
 // compensation release event
 //
 // # Object describing equity compensation security release transaction
-type PlanSecurityRelease struct {
-	EquityCompensationRelease
-}
+type PlanSecurityRelease = EquityCompensationRelease
