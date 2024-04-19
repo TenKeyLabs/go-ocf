@@ -1,7 +1,6 @@
 package returntopool
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/returntopool"
 )
@@ -10,7 +9,5 @@ import (
 // upon cancellation.
 type StockPlanReturnToPool struct {
 	returntopool.ReturnToPool
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 }

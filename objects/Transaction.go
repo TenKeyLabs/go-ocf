@@ -3,6 +3,7 @@ package objects
 import (
 	"encoding/json"
 	"fmt"
+	"maps"
 
 	"github.com/tenkeylabs/go-ocf/enums"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/acceptance"
@@ -19,95 +20,102 @@ import (
 	"github.com/tenkeylabs/go-ocf/objects/transactions/split"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/transfer"
 	"github.com/tenkeylabs/go-ocf/objects/transactions/vesting"
+	"github.com/tenkeylabs/go-ocf/primitives/objects"
+	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 )
 
 type Transaction struct {
-	ObjectType enums.ObjectType `json:"object_type"`
+	objects.Object
+	transactions.Transaction
 
 	//Acceptance
-	ConvertibleAcceptance        *acceptance.ConvertibleAcceptance        `json:"convertible_acceptance,omitempty"`
-	EquityCompensationAcceptance *acceptance.EquityCompensationAcceptance `json:"equity_compensation_acceptance,omitempty"`
-	PlanSecurityAcceptance       *acceptance.PlanSecurityAcceptance       `json:"plan_security_acceptance,omitempty"`
-	StockAcceptance              *acceptance.StockAcceptance              `json:"stock_acceptance,omitempty"`
-	WarrantAcceptance            *acceptance.WarrantAcceptance            `json:"warrant_acceptance,omitempty"`
+	ConvertibleAcceptance        *acceptance.ConvertibleAcceptance
+	EquityCompensationAcceptance *acceptance.EquityCompensationAcceptance
+	PlanSecurityAcceptance       *acceptance.PlanSecurityAcceptance
+	StockAcceptance              *acceptance.StockAcceptance
+	WarrantAcceptance            *acceptance.WarrantAcceptance
 
 	//Adjustment
-	IssuerAuthorizedSharesAdjustment     *adjustment.IssuerAuthorizedSharesAdjustment     `json:"issuer_authorized_shares_adjustment,omitempty"`
-	StockClassAuthorizedSharesAdjustment *adjustment.StockClassAuthorizedSharesAdjustment `json:"stock_class_authorized_shares_adjustment,omitempty"`
-	StockClassConversionRatioAdjustment  *adjustment.StockClassConversionRatioAdjustment  `json:"stock_class_conversion_ratio_adjustment,omitempty"`
-	StockPlanPoolAdjustment              *adjustment.StockPlanPoolAdjustment              `json:"stock_plan_pool_adjustment,omitempty"`
+	IssuerAuthorizedSharesAdjustment     *adjustment.IssuerAuthorizedSharesAdjustment
+	StockClassAuthorizedSharesAdjustment *adjustment.StockClassAuthorizedSharesAdjustment
+	StockClassConversionRatioAdjustment  *adjustment.StockClassConversionRatioAdjustment
+	StockPlanPoolAdjustment              *adjustment.StockPlanPoolAdjustment
 
 	//Cancellation
-	ConvertibleCancellation        *cancellation.ConvertibleCancellation        `json:"convertible_cancellation,omitempty"`
-	EquityCompensationCancellation *cancellation.EquityCompensationCancellation `json:"equity_compensation_cancellation,omitempty"`
-	PlanSecurityCancellation       *cancellation.PlanSecurityCancellation       `json:"plan_security_cancellation,omitempty"`
-	StockCancellation              *cancellation.StockCancellation              `json:"stock_cancellation,omitempty"`
-	WarrantCancellation            *cancellation.WarrantCancellation            `json:"warrant_cancellation,omitempty"`
+	ConvertibleCancellation        *cancellation.ConvertibleCancellation
+	EquityCompensationCancellation *cancellation.EquityCompensationCancellation
+	PlanSecurityCancellation       *cancellation.PlanSecurityCancellation
+	StockCancellation              *cancellation.StockCancellation
+	WarrantCancellation            *cancellation.WarrantCancellation
 
 	//Conversion
-	ConvertibleConversion *conversion.ConvertibleConversion `json:"convertible_conversion,omitempty"`
-	StockConversion       *conversion.StockConversion       `json:"stock_conversion,omitempty"`
+	ConvertibleConversion *conversion.ConvertibleConversion
+	StockConversion       *conversion.StockConversion
 
 	//Exercise
-	EquityCompensationExercise *exercise.EquityCompensationExercise `json:"equity_compensation_exercise,omitempty"`
-	PlanSecurityExercise       *exercise.PlanSecurityExercise       `json:"plan_security_exercise,omitempty"`
-	WarrantExercise            *exercise.WarrantExercise            `json:"warrant_exercise,omitempty"`
+	EquityCompensationExercise *exercise.EquityCompensationExercise
+	PlanSecurityExercise       *exercise.PlanSecurityExercise
+	WarrantExercise            *exercise.WarrantExercise
 
 	//Issuance
-	ConvertibleIssuance        *issuance.ConvertibleIssuance        `json:"convertible_issuance,omitempty"`
-	EquityCompensationIssuance *issuance.EquityCompensationIssuance `json:"equity_compensation_issuance,omitempty"`
-	PlanSecurityIssuance       *issuance.PlanSecurityIssuance       `json:"plan_security_issuance,omitempty"`
-	StockIssuance              *issuance.StockIssuance              `json:"stock_issuance,omitempty"`
-	WarrantIssuance            *issuance.WarrantIssuance            `json:"warrant_issuance,omitempty"`
+	ConvertibleIssuance        *issuance.ConvertibleIssuance
+	EquityCompensationIssuance *issuance.EquityCompensationIssuance
+	PlanSecurityIssuance       *issuance.PlanSecurityIssuance
+	StockIssuance              *issuance.StockIssuance
+	WarrantIssuance            *issuance.WarrantIssuance
 
 	//Reissuance
-	StockReissuance *reissuance.StockReissuance `json:"stock_reissuance,omitempty"`
+	StockReissuance *reissuance.StockReissuance
 
 	//Release
-	EquityCompensationRelease *release.EquityCompensationRelease `json:"equity_compensation_release,omitempty"`
-	PlanSecurityRelease       *release.PlanSecurityRelease       `json:"plan_security_release,omitempty"`
+	EquityCompensationRelease *release.EquityCompensationRelease
+	PlanSecurityRelease       *release.PlanSecurityRelease
 
 	//Repurchase
-	StockRepurchase *repurchase.StockRepurchase `json:"stock_repurchase,omitempty"`
+	StockRepurchase *repurchase.StockRepurchase
 
 	//Retraction
-	ConvertibleRetraction        *retraction.ConvertibleRetraction        `json:"convertible_retraction,omitempty"`
-	EquityCompensationRetraction *retraction.EquityCompensationRetraction `json:"equity_compensation_retraction,omitempty"`
-	PlanSecurityRetraction       *retraction.PlanSecurityRetraction       `json:"plan_security_retraction,omitempty"`
-	StockRetraction              *retraction.StockRetraction              `json:"stock_retraction,omitempty"`
-	WarrantRetraction            *retraction.WarrantRetraction            `json:"warrant_retraction,omitempty"`
+	ConvertibleRetraction        *retraction.ConvertibleRetraction
+	EquityCompensationRetraction *retraction.EquityCompensationRetraction
+	PlanSecurityRetraction       *retraction.PlanSecurityRetraction
+	StockRetraction              *retraction.StockRetraction
+	WarrantRetraction            *retraction.WarrantRetraction
 
 	//ReturnToPool
-	StockPlanReturnToPool *returntopool.StockPlanReturnToPool `json:"stock_plan_return_to_pool,omitempty"`
+	StockPlanReturnToPool *returntopool.StockPlanReturnToPool
 
 	//Split
-	StockClassSplit *split.StockClassSplit `json:"stock_class_split,omitempty"`
+	StockClassSplit *split.StockClassSplit
 
 	//Transfer
-	ConvertibleTransfer        *transfer.ConvertibleTransfer        `json:"convertible_transfer,omitempty"`
-	EquityCompensationTransfer *transfer.EquityCompensationTransfer `json:"equity_compensation_transfer,omitempty"`
-	PlanSecurityTransfer       *transfer.PlanSecurityTransfer       `json:"plan_security_transfer,omitempty"`
-	StockTransfer              *transfer.StockTransfer              `json:"stock_transfer,omitempty"`
-	WarrantTransfer            *transfer.WarrantTransfer            `json:"warrant_transfer,omitempty"`
+	ConvertibleTransfer        *transfer.ConvertibleTransfer
+	EquityCompensationTransfer *transfer.EquityCompensationTransfer
+	PlanSecurityTransfer       *transfer.PlanSecurityTransfer
+	StockTransfer              *transfer.StockTransfer
+	WarrantTransfer            *transfer.WarrantTransfer
 
 	//Vesting
-	VestingAcceleration *vesting.VestingAcceleration `json:"vesting_acceleration,omitempty"`
-	VestingEvent        *vesting.VestingEvent        `json:"vesting_event,omitempty"`
-	VestingStart        *vesting.VestingStart        `json:"vesting_start,omitempty"`
+	VestingAcceleration *vesting.VestingAcceleration
+	VestingEvent        *vesting.VestingEvent
+	VestingStart        *vesting.VestingStart
+}
+
+type MarshalStruct struct {
+	objects.Object
+	transactions.Transaction
 }
 
 func (t *Transaction) UnmarshalJSON(data []byte) error {
-	aliasTransaction := &struct {
-		ObjectType enums.ObjectType `json:"object_type"`
-	}{}
+	aliasTransaction := MarshalStruct{}
 	if err := json.Unmarshal(data, &aliasTransaction); err != nil {
 		return err
 	}
 
-	t.ObjectType = aliasTransaction.ObjectType
+	t.Object = aliasTransaction.Object
+	t.Transaction = aliasTransaction.Transaction
 
 	var err error
-	switch aliasTransaction.ObjectType {
+	switch t.ObjectType {
 
 	//Acceptance
 	case enums.ObjectTxConvertibleAcceptance:
@@ -314,8 +322,40 @@ func (t *Transaction) UnmarshalJSON(data []byte) error {
 }
 
 func (t *Transaction) MarshalJSON() ([]byte, error) {
-	switch t.ObjectType {
+	transactionData, err := t.getTransactionData()
+	if err != nil {
+		return nil, err
+	}
 
+	dataMap := map[string]any{}
+	err = json.Unmarshal(transactionData, &dataMap)
+	if err != nil {
+		return nil, err
+	}
+
+	txWrapper := MarshalStruct{
+		Object:      t.Object,
+		Transaction: t.Transaction,
+	}
+
+	txData, err := json.Marshal(txWrapper)
+	if err != nil {
+		return nil, err
+	}
+
+	txMap := map[string]any{}
+	err = json.Unmarshal(txData, &txMap)
+	if err != nil {
+		return nil, err
+	}
+
+	maps.Copy(txMap, dataMap)
+
+	return json.Marshal(txMap)
+}
+
+func (t *Transaction) getTransactionData() ([]byte, error) {
+	switch t.ObjectType {
 	//Acceptance
 	case enums.ObjectTxConvertibleAcceptance:
 		return json.Marshal(t.ConvertibleAcceptance)

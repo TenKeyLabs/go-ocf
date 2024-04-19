@@ -1,7 +1,6 @@
 package conversion
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/conversion"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -10,9 +9,7 @@ import (
 // Object describing a conversion of a convertible security
 type ConvertibleConversion struct {
 	conversion.Conversion
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	// Identifier for the convertible that holds the remainder balance (for partial conversions)
 	BalanceSecurityID *string `json:"balance_security_id,omitempty"`

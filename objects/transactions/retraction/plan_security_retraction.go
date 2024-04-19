@@ -4,6 +4,4 @@ package retraction
 // equity compensation retraction event)
 //
 // # Object describing a retraction of equity compensation
-type PlanSecurityRetraction struct {
-	EquityCompensationRetraction
-}
+type PlanSecurityRetraction = EquityCompensationRetraction

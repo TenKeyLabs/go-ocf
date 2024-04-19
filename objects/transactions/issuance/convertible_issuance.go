@@ -2,7 +2,6 @@ package issuance
 
 import (
 	"github.com/tenkeylabs/go-ocf/enums"
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions/issuance"
 	"github.com/tenkeylabs/go-ocf/types"
@@ -13,9 +12,7 @@ import (
 // stakeholder
 type ConvertibleIssuance struct {
 	issuance.Issuance
-	transactions.Transaction
 	transactions.SecurityTransaction
-	objects.Object
 
 	// In event the convertible can convert due to trigger events (e.g. Maturity, Next Qualified
 	// Financing, Change of Control, at Election of Holder), what are the terms?

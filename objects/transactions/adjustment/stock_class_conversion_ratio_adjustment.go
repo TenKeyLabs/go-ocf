@@ -1,7 +1,6 @@
 package adjustment
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 	"github.com/tenkeylabs/go-ocf/types/conversionmechanisms"
 )
@@ -13,8 +12,6 @@ import (
 // anti-dilution protection vs. full ratchet anti-dilution protection.
 type StockClassConversionRatioAdjustment struct {
 	transactions.StockClassTransaction
-	transactions.Transaction
-	objects.Object
 
 	// New conversion ratio mechanism describing new conversion price and conversion ratio in
 	// effect following a repricing - based on original issue price to new conversion price

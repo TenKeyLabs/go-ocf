@@ -4,6 +4,4 @@ package transfer
 // compensation transfer event)
 //
 // # Object describing a transfer of equity compensation
-type PlanSecurityTransfer struct {
-	EquityCompensationTransfer
-}
+type PlanSecurityTransfer = EquityCompensationTransfer

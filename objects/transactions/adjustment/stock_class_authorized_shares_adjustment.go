@@ -1,15 +1,12 @@
 package adjustment
 
 import (
-	"github.com/tenkeylabs/go-ocf/primitives/objects"
 	"github.com/tenkeylabs/go-ocf/primitives/objects/transactions"
 )
 
 // Object describing an event to change the number of authoried shares of a stock class.
 type StockClassAuthorizedSharesAdjustment struct {
 	transactions.StockClassTransaction
-	transactions.Transaction
-	objects.Object
 
 	// Date on which the board approved the change to the stock class
 	BoardApprovalDate *string `json:"board_approval_date,omitempty"`
