@@ -2,7 +2,6 @@ package conversionmechanisms
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/tenkeylabs/go-ocf/enums"
@@ -90,5 +89,5 @@ func (c *ConversionMechanism) MarshalJSON() ([]byte, error) {
 		return json.Marshal(c.ValuationBasedConversionMechanism)
 	}
 
-	return nil, errors.New(fmt.Sprintf("unknown conversion mechanism type: %v", c.Type))
+	return nil, fmt.Errorf("unknown conversion mechanism type: %v", c.Type)
 }

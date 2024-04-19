@@ -17,48 +17,48 @@ var _ = Describe("Safes", func() {
 	It("should parse json into go-ocf models", func() {
 		ocfResources, err := ParseOcfResources(folderPath)
 
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		Expect(ocfResources).ToNot(BeNil())
 	})
 
 	It("should marshal go-ocf models into json that matches the original json", func() {
 		ocfResources, err := ParseOcfResources(folderPath)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalStockPlansJson, err := getFileItemsJson(folderPath, "stock_plans.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFStockPlansJson, err := json.Marshal(ocfResources.StockPlans)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalStockLegendTemplatesJson, err := getFileItemsJson(folderPath, "stock_legends.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFStockLegendTemplatesJson, err := json.Marshal(ocfResources.StockLegendTemplates)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalStockClassesJson, err := getFileItemsJson(folderPath, "stock_classes.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFStockClassesJson, err := json.Marshal(ocfResources.StockClasses)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalTransactionsJson, err := getFileItemsJson(folderPath, "transactions.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFTransactionsJson, err := json.MarshalIndent(ocfResources.Transactions, "", "    ")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalStakeholdersJson, err := getFileItemsJson(folderPath, "stakeholders.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFStakeholdersJson, err := json.Marshal(ocfResources.Stakeholders)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalVestingTermsJson, err := getFileItemsJson(folderPath, "vesting_terms.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFVestingTermsJson, err := json.MarshalIndent(ocfResources.VestingTerms, "", "    ")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		originalValuationsJson, err := getFileItemsJson(folderPath, "valuations.ocf.json")
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 		goOCFValuationsJson, err := json.Marshal(ocfResources.Valuations)
-		Expect(err).To(BeNil())
+		Expect(err).ToNot(HaveOccurred())
 
 		Expect(goOCFStockPlansJson).To(MatchJSON(originalStockPlansJson))
 		Expect(goOCFStockLegendTemplatesJson).To(MatchJSON(originalStockLegendTemplatesJson))
@@ -67,8 +67,6 @@ var _ = Describe("Safes", func() {
 		Expect(goOCFStakeholdersJson).To(MatchJSON(originalStakeholdersJson))
 		Expect(goOCFVestingTermsJson).To(MatchJSON(originalVestingTermsJson))
 		Expect(goOCFValuationsJson).To(MatchJSON(originalValuationsJson))
-
-		Expect(err).To(BeNil())
 	})
 })
 
@@ -78,7 +76,7 @@ func getFileItemsJson(folderPath string, filePath string) ([]byte, error) {
 		return nil, fmt.Errorf("unable to read file: %w", err)
 	}
 
-	var fileContent ocfFileContent[map[string]interface{}]
+	var fileContent ocfFileContent[map[string]any]
 	err = json.Unmarshal(fileJson, &fileContent)
 	if err != nil {
 		return nil, fmt.Errorf("unable unmarshal into generic file: %w", err)

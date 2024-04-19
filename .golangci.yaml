@@ -1,0 +1,112 @@
+run:
+  timeout: 5m
+  concurrency: 4
+  allow-parallel-runners: true
+  allow-serial-runners: true
+issues:
+  exclude-dirs:
+    - cmd/config-validator
+    - cmd/render-template
+linters:
+  # Enable specific linter
+  # https://golangci-lint.run/usage/linters/#enabled-by-default
+  enable:
+    - gosimple
+    - govet
+    - dupword
+    - ginkgolinter
+    - revive
+
+  disable:
+    - errcheck
+    - ineffassign
+    - staticcheck
+    - unused
+    - dupl
+    - errorlint
+    - exhaustive
+    - goconst
+    - gocritic
+    - gocyclo
+    - goimports
+    - gomnd
+    - gosec
+    - gosmopolitan
+    - inamedparam
+    - makezero
+    - misspell
+    - nilerr
+    - noctx
+    - prealloc
+    - reassign
+    - spancheck
+    - sqlclosecheck
+    - stylecheck
+    - tagalign
+    - tagliatelle
+    - unparam
+    - unconvert
+    - wastedassign
+    - whitespace
+    - wsl
+linters-settings:
+  revive:
+    # Sets the default severity.
+    # See https://github.com/mgechev/revive#configuration
+    severity: error
+    # Enable all available rules.
+    enable-all-rules: true
+    # Sets the default failure confidence.
+    # This means that linting errors with less than 0.8 confidence will be ignored.
+    # Default: 0.8
+    confidence: 0.1
+    # Available Rules https://github.com/mgechev/revive?tab=readme-ov-file#available-rules
+    rules:
+      - name: var-naming
+        disabled: true
+      - name: line-length-limit
+        disabled: true
+      - name: add-constant
+        disabled: true
+      - name: comment-spacings
+        disabled: true
+      - name: max-public-structs
+        disabled: true
+      - name: cyclomatic
+        disabled: true
+      - name: cognitive-complexity
+        disabled: true
+      - name: function-result-limit
+        disabled: true
+      - name: modifies-value-receiver
+        disabled: true
+      - name: unhandled-error
+        disabled: true
+      - name: exported
+        disabled: true
+      - name: function-length
+        disabled: true
+      - name: modifies-parameter
+        disabled: true
+      - name: dot-imports
+        disabled: true
+      - name: unused-receiver
+        disabled: true
+      - name: import-alias-naming
+        disabled: true
+      - name: unused-receiver
+        disabled: true
+      - name: flag-parameter
+        disabled: true
+      - name: unchecked-type-assertion
+        disabled: true
+      - name: argument-limit
+        disabled: true
+      - name: max-control-nesting
+        disabled: true
+      - name: optimize-operands-order
+        disabled: true
+      - name: get-return
+        disabled: true
+      - name: early-return
+        disabled: true

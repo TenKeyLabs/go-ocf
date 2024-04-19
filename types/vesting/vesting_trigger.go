@@ -2,7 +2,6 @@ package vesting
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/tenkeylabs/go-ocf/enums"
@@ -62,5 +61,5 @@ func (v VestingTrigger) MarshalJSON() ([]byte, error) {
 		return json.Marshal(v.VestingEventTrigger)
 	}
 
-	return nil, errors.New(fmt.Sprintf("unknown vesting trigger type: %s", v.Type))
+	return nil, fmt.Errorf("unknown vesting trigger type: %s", v.Type)
 }

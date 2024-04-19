@@ -1,10 +1,10 @@
-name: GO-OCF
+name: go-ocf
 
 on:
   pull_request:
     paths:
       - "./**"
-      - .github/go-ocf.yaml
+      - .github/workflows/go-ocf.yml
   push:
     branches:
       - main

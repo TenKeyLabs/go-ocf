@@ -2,7 +2,6 @@ package conversionrights
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/tenkeylabs/go-ocf/enums"
@@ -54,6 +53,6 @@ func (c ConversionRights) MarshalJSON() ([]byte, error) {
 	case enums.WarrantConversionRight:
 		return json.Marshal(c.WarrantConversionRight)
 	}
-	
-	return nil, errors.New(fmt.Sprintf("unknown conversion right type: %s", c.Type))
+
+	return nil, fmt.Errorf("unknown conversion right type: %s", c.Type)
 }
