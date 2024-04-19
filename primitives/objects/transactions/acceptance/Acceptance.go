@@ -1,3 +1,3 @@
 package acceptance
 
-type Acceptance map[string]interface{}
+type Acceptance map[string]any

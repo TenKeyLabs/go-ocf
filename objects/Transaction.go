@@ -116,7 +116,6 @@ func (t *Transaction) UnmarshalJSON(data []byte) error {
 
 	var err error
 	switch t.ObjectType {
-
 	//Acceptance
 	case enums.ObjectTxConvertibleAcceptance:
 		var convertibleAcceptance acceptance.ConvertibleAcceptance

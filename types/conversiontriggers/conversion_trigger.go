@@ -2,7 +2,6 @@ package conversiontriggers
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/tenkeylabs/go-ocf/enums"
@@ -76,5 +75,5 @@ func (c ConversionTrigger) MarshalJSON() ([]byte, error) {
 		return json.Marshal(c.UnspecifiedConversionTrigger)
 	}
 
-	return nil, errors.New(fmt.Sprintf("unknown conversion trigger type: %s", c.Type))
+	return nil, fmt.Errorf("unknown conversion trigger type: %s", c.Type)
 }

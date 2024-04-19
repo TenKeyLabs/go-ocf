@@ -1,0 +1,29 @@
+name: golangci-lint
+on:
+  pull_request:
+    paths:
+      - "./**"
+      - .github/workflows/golangci-lint.yml
+  push:
+    branches:
+      - main
+    paths:
+      - "./**"
+
+permissions:
+  contents: read
+  # Optional: allow read access to pull request. Use with `only-new-issues` option.
+  pull-requests: read
+
+jobs:
+  golangci:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: "go.mod"
+          check-latest: true
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v4
